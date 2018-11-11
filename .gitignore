@@ -1,0 +1,36 @@
+## OS files ##
+.directory
+[Dd]esktop.ini
+Thumbs.db
+.DS_Store
+._*
+
+## Editor files ##
+
+# Vim
+[._]*.sw[a-p]
+[._]sw[a-p]
+.netrwhist
+.lvimrc
+tags
+*~
+
+# JetBrains
+.idea/
+*.iml
+
+## Language files ##
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Java/Kotlin/Scala
+META-INF/
+*.class
+
+# C/C++
+compile_commands.json
+.clang
+*.out
+
