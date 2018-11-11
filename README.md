@@ -16,6 +16,7 @@ These are the currently implemented languages:
 * [Bash](implementations/Bash.sh)
 * [C++](implementations/C++.cpp)
 * [CoffeeScript](implementations/CoffeeScript.coffee)
+* [Go](implementations/Go.go)
 * [Java](implementations/Java.java)
 * [JavaScript](implementations/JavaScript.js)
 * [Kotlin](implementations/Kotlin.kt)

@@ -6,10 +6,10 @@ longest = []
 
 with open('words.txt', 'r') as words:
     for word in words.read().splitlines():
-        flen = len(longest[0]) if len(longest) else 0
-        if len(word) == flen and not invalid(word):
+        _len = len(longest[0]) if len(longest) else 0
+        if len(word) == _len and not invalid(word):
             longest.append(word)
-        if len(word) > flen and not invalid(word):
+        if len(word) > _len and not invalid(word):
             longest = [word]
 
 print('\n'.join(longest))
