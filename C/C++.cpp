@@ -3,31 +3,28 @@
 #include <regex>
 
 int main() {
-    std::vector<std::string> words;
     std::vector<std::string> longest;
     std::regex invalid(".*[gkmqvwxzio].*");
-    std::ifstream words_txt("words.txt");
-    std::string line;
-    while(!words_txt.eof()) {
-        getline(words_txt, line);
-        words.push_back(line);
-    }
-    words_txt.close();
+    std::ifstream words("words.txt");
+    std::string word;
+    long unsigned int wlen = 0, maxlen = 0;
 
-    long unsigned int len = 0;
-    for(const auto &word : words) {
-        len = longest.empty() ? 0 : longest.front().length();
-        if(word.length() == len) {
+    while(!words.eof()) {
+        getline(words, word);
+        wlen = word.length();
+        if(wlen == maxlen) {
             if(!regex_match(word, invalid)) {
                 longest.push_back(word);
             }
-        } else if(word.length() > len) {
+        } else if(wlen > maxlen) {
             if(!regex_match(word, invalid)) {
                 longest.clear();
                 longest.push_back(word);
+                maxlen = wlen;
             }
         }
     }
+    words.close();
 
     for(const auto &l : longest) std::cout << l << std::endl;
     return 0;

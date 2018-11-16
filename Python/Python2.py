@@ -1,16 +1,18 @@
-from __future__ import print_function
+#!/usr/bin/env python2
+
 from re import search
 
 invalid = lambda s: search('[gkmqvwxzio]', s)
 longest = []
+maxlen = 0
 
 with open('words.txt', 'r') as words:
     for word in words.read().splitlines():
-        _len = len(longest[0]) if len(longest) else 0
-        if len(word) == _len and not invalid(word):
+        if len(word) == maxlen and not invalid(word):
             longest.append(word)
-        if len(word) > _len and not invalid(word):
+        if len(word) > maxlen and not invalid(word):
             longest = [word]
+            maxlen = len(word)
 
-print('\n'.join(longest))
+print '\n'.join(longest)
 

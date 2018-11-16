@@ -9,28 +9,48 @@ and implemented in multiple languages.
 [SSD]: https://en.wikipedia.org/wiki/Seven-segment_display
 [TB21]: https://www.youtube.com/watch?v=zp4BMR88260
 
-## Implementations
+## Languages
 
 These are the currently implemented languages:
 
-* [Bash](implementations/Bash.sh)
-* [C++](implementations/C++.cpp)
-* [CoffeeScript](implementations/CoffeeScript.coffee)
-* [Go](implementations/Go.go)
-* [Java](implementations/Java.java)
-* [JavaScript](implementations/JavaScript.js)
-* [Kotlin](implementations/Kotlin.kt)
-* [LiveScript](implementations/LiveScript.ls)
-* [MySQL](implementations/MySQL.sql)
-* [Python](implementations/Python.py)
-* [Scala](implementations/Scala.scala)
-* [SQLite](implementations/SQLite.sql)
-* [TypeScript](implementations/TypeScript.ts)
-* [VimL](implementations/VimL.vim)
+* [Awk](Awk/Awk.awk)
+* [Bash](Shell/Bash.sh)
+* [C#](C/C#.cs)
+* [C++](C/C++.cpp)
+* [CMake](CMake/CMake.cmake)
+* [CoffeeScript](JavaScript/CoffeeScript.coffee)
+* [D](D/D.d)
+* [Delphi](Pascal/Delphi.pas)
+* [Gawk](Awk/Gawk.awk)
+* [Go](Go/Go.go)
+* [Groovy](Groovy/Groovy.groovy)
+* [JavaScript](JavaScript/JavaScript.js)
+* [Java](Java/Java.java)
+* [Kotlin](Kotlin/Kotlin.kt)
+* [LiveScript](JavaScript/LiveScript.ls)
+* [MySQL](SQL/MySQL.sql)
+* [Pascal](Pascal/Pascal.pas)
+* [Python2](Python/Python2.py)
+* [Python3](Python/Python3.py)
+* [Python](Python/Python.py)
+* [R](R/R.r)
+* [SQLite](SQL/SQLite.sql)
+* [Scala](Scala/Scala.scala)
+* [TypeScript](JavaScript/TypeScript.ts)
+* [VimL](VimL/VimL.vim)
+* [Zsh](Shell/Zsh.sh)
 
 To add an implementation in a new language,
 or improve an existing implementation,
 check [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Benchmarks
+
+You can see the current benchmarks in [BENCHMARKS.md](BENCHMARKS.md).
+To run your own benchmarks (`make && make bench`) you will need
+[hyperfine][hf] and a compiler/runtime environment for every language.
+
+[hf]: https://github.com/sharkdp/hyperfine
 
 ## Credits
 
@@ -39,6 +59,12 @@ check [CONTRIBUTING.md](CONTRIBUTING.md).
 
 [Tom Scott]: https://twitter.com/tomscott
 [dwyl]: https://github.com/dwyl/english-words/graphs/contributors
+
+## TODO
+
+* More languages.
+* Tests.
+* Travis?
 
 ## License
 

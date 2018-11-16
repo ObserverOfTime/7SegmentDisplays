@@ -19,6 +19,7 @@
     * `words`: List/array of words read from `words.txt`.
     * `longest`: List/array of the longest words.
     * `invalid`: Regular expression of invalid letters.
+    * `maxlen`: Length of the longest word(s).
 
 ## Expected output
 
@@ -29,11 +30,11 @@ supertranscendentness
 three-and-a-halfpenny
 ```
 
-## Adding a new implementation
+## Adding a new language
 
 * Name the file according to the language it was written in.
+* Place the file inside a folder named after the language family.
 * Don't use abbreviations for the name, unless it would be too long.
-* Use hyphens ("-") as word separators in the filename.
-* Add the implementation to the [README](README.md#implementations).
-* Add any compiled or editor-generated files to [.gitignore](.gitignore).
+* Add the new language to the [README](README.md#languages) (`make langs`).
+* Add any compiler/editor-generated files to [.gitignore](.gitignore).
 

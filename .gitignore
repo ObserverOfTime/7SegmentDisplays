@@ -6,31 +6,22 @@ Thumbs.db
 ._*
 
 ## Editor files ##
-
-# Vim
+.idea/
+out/
 [._]*.sw[a-p]
 [._]sw[a-p]
 .netrwhist
 .lvimrc
 tags
+*.iml
 *~
 
-# JetBrains
-.idea/
-*.iml
-
 ## Language files ##
-
-# Python
 __pycache__/
-*.py[cod]
-
-# Java/Kotlin/Scala
 META-INF/
+build/
+*.py[cod]
 *.class
-
-# C/C++
-compile_commands.json
-.clang
 *.out
+*.o
 
