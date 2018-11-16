@@ -1,5 +1,3 @@
-#!/usr/bin/env kotlin
-
 import java.io.File
 
 fun main(args: Array<String>) {

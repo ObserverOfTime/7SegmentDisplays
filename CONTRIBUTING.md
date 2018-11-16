@@ -10,10 +10,10 @@
 * You can skip checking for `words.txt`'s existence.
 * If possible, separate the code into 3 or 4 sections (with a blank line):
 
-    0) Importing/including (if necessary).
-    1) Declaring variables & reading the file.
-    2) Finding the longest words.
-    3) Printing the longest words.
+    0. Importing/including (if necessary).
+    1. Declaring variables & reading the file.
+    2. Finding the longest words.
+    3. Printing the longest words.
 * If possible, use the following variable names for consistency:
 
     * `words`: List/array of words read from `words.txt`.

@@ -10,15 +10,11 @@ func main() {
 
     for _, word := range strings.Split(string(words), "\n") {
         wlen := len(word)
-        if wlen == maxlen {
-            if !invalid.MatchString(word) {
-                longest = append(longest, word)
-            }
-        } else if wlen > maxlen {
-            if !invalid.MatchString(word) {
-                longest = []string{word}
-                maxlen = wlen
-            }
+        if wlen == maxlen && !invalid.MatchString(word) {
+            longest = append(longest, word)
+        } else if wlen > maxlen && !invalid.MatchString(word) {
+            longest = []string{word}
+            maxlen = wlen
         }
     }
 
