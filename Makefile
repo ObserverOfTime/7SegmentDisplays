@@ -1,6 +1,6 @@
 # C++
 CPP = g++
-CPPFLAGS = -Ofast
+CPPFLAGS = -std=c++11 -Ofast
 
 # C#
 CSC = mcs
@@ -31,34 +31,7 @@ DELPHIFLAGS = $(PASCALFLAGS)
 SCALAC = scalac
 SCALAFLAGS =
 
-benchmarks = \
-	'./C/C++.out' \
-	'./D/D.out' \
-	'./Go/Go.out' \
-	'./Pascal/Delphi.out' \
-	'./Pascal/Pascal.out' \
-	'awk -f Awk/Awk.awk' \
-	'bash Shell/Bash.sh' \
-	'cmake -P CMake/CMake.cmake' \
-	'coffee JavaScript/CoffeeScript.coffee' \
-	'gawk -f Awk/Gawk.awk' \
-	'groovy Groovy/Groovy.groovy 2>/dev/null' \
-	'java -cp Java Java7SegmentDisplays' \
-	'kotlin -cp Kotlin KotlinKt' \
-	'lsc JavaScript/LiveScript.ls' \
-	'mono C/C\#.out' \
-	'mysql words -Nsu 7SegmentDisplays <SQL/MySQL.sql' \
-	'node JavaScript/JavaScript.js' \
-	'nvim -u NONE --noplugin --headless +"so VimL/VimL.vim|q"' \
-	'python2 Python/Python2.py' \
-	'python3 Python/Python3.py' \
-	'Rscript R/R.r' \
-	'scala -cp Scala Scala7SegmentDisplays' \
-	'sqlite3 /tmp/7SegmentDisplays.db <SQL/SQLite.sql' \
-	'ts-node JavaScript/TypeScript.ts' \
-	'zsh Shell/Zsh.sh'
-
-.PHONY: all bench clean distclean help
+commands = $(shell awk -F[:,] '{printf $$2" "}' t/tests.json)
 
 ## Compile all languages
 all: cpp cs d delphi go java kotlin pascal scala
@@ -81,24 +54,26 @@ pascal: Pascal/Pascal.pas; $(FPC) $(PASCALFLAGS) $< -o$(<:.pas=.out)
 
 scala: Scala/Scala.scala; $(SCALAC) $(SCALACFLAGS) -d Scala $<
 
+## Run language tests
+test: t/tests.t; prove --trap -v $< $(if $(TESTS),:: $(TESTS),)
+
 ## Run benchmarks with hyperfine
-bench:
-	hyperfine -w 2 -r 5 $(benchmarks) --export-markdown BENCHMARKS.md
+bench: ; hyperfine -w 2 -r 5 $(commands) --export-markdown BENCHMARKS.md
 
 ## Remove object files
-clean:
-	find -name '*.o' -exec -rm -v {} +
+clean: ; find -name '*.o' -exec rm -v {} +
 
 ## Remove all generated files
-distclean:
-	find -regex '.*\.\(o\(ut\)?\|class\)' -exec rm -v {} +
+cleanall: ; find -regex '.*\.\(o\(ut\)?\|class\)' -exec rm -v {} +
 
 ## List all languages in markdown format
 langs:
-	@find * -mindepth 1 -type f -name '[A-Z]*.*' | \
+	@find * -mindepth 1 -type f -name '[A-Z]*.*' -not \
+		-regex '.*\.o\(ut\)?' -not -name '*.class' | \
 		awk -F[/.]  '{print "* ["$$2"]("$$0")"}' | sort
 
 ## Show this help message
 help:
-	@awk '/^##/{help=substr($$0, 3); getline; print $$1help}' $(MAKEFILE_LIST)
+	@awk '/^##/{help=substr($$0, 3); getline; \
+		print $$1help}' $(lastword $(MAKEFILE_LIST))
 

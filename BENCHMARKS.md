@@ -1,27 +1,29 @@
 | Command | Mean [ms] | Min…Max [ms] |
 |:---|---:|---:|
-| `./C/C++.out` | 22.7 ± 4.1 | 17.7…26.7 |
-| `./D/D.out` | 79.2 ± 3.5 | 75.7…83.6 |
-| `./Go/Go.out` | 36.8 ± 2.5 | 33.5…39.5 |
-| `./Pascal/Delphi.out` | 106.4 ± 2.4 | 102.6…108.2 |
-| `./Pascal/Pascal.out` | 47.4 ± 1.4 | 46.1…49.6 |
-| `awk -f Awk/Awk.awk` | 182.6 ± 5.8 | 178.1…192.4 |
-| `bash Shell/Bash.sh` | 8271.7 ± 67.5 | 8206.4…8358.3 |
-| `cmake -P CMake/CMake.cmake` | 13458.8 ± 188.6 | 13272.6…13716.9 |
-| `coffee JavaScript/CoffeeScript.coffee` | 243.1 ± 5.0 | 236.3…250.3 |
-| `gawk -f Awk/Gawk.awk` | 364.9 ± 5.4 | 358.7…369.5 |
-| `groovy Groovy/Groovy.groovy 2>/dev/null` | 2188.7 ± 83.7 | 2086.1…2278.2 |
-| `java -cp Java Java7SegmentDisplays` | 330.6 ± 20.2 | 298.5…347.5 |
-| `kotlin -cp Kotlin KotlinKt` | 347.0 ± 17.0 | 323.6…365.6 |
-| `lsc JavaScript/LiveScript.ls` | 226.3 ± 7.5 | 215.4…235.8 |
-| `mono C/C#.out` | 149.9 ± 18.5 | 140.4…182.9 |
-| `mysql words -Nsu 7SegmentDisplays <SQL/MySQL.sql` | 2294.9 ± 79.3 | 2213.0…2399.7 |
-| `node JavaScript/JavaScript.js` | 141.0 ± 15.7 | 124.9…166.4 |
-| `nvim -u NONE --noplugin --headless +"so VimL/VimL.vim\|q"` | 4644.6 ± 29.0 | 4611.7…4675.6 |
-| `python2 Python/Python2.py` | 141.8 ± 2.6 | 138.0…145.3 |
-| `python3 Python/Python3.py` | 198.1 ± 5.2 | 193.5…205.6 |
-| `Rscript R/R.r` | 1079.3 ± 42.7 | 1049.3…1153.7 |
-| `scala -cp Scala Scala7SegmentDisplays` | 1351.6 ± 92.5 | 1281.8…1479.2 |
-| `sqlite3 /tmp/7SegmentDisplays.db <SQL/SQLite.sql` | 526.4 ± 38.1 | 501.4…591.5 |
-| `ts-node JavaScript/TypeScript.ts` | 448.5 ± 5.9 | 439.3…455.7 |
-| `zsh Shell/Zsh.sh` | 4031.0 ± 126.9 | 3923.9…4247.9 |
+| `awk -f Awk/Awk.awk` | 290.9 ± 5.4 | 285.9…299.6 |
+| `bash Shell/Bash.sh` | 10275.0 ± 173.5 | 10152.7…10573.3 |
+| `mono C/C#.out` | 169.8 ± 14.0 | 159.5…191.9 |
+| `./C/C++.out` | 27.3 ± 2.2 | 23.8…29.3 |
+| `cmake -P CMake/CMake.cmake 2>&1` | 15368.4 ± 126.8 | 15280.5…15587.9 |
+| `coffee JavaScript/CoffeeScript.coffee` | 272.8 ± 2.9 | 270.2…277.7 |
+| `./D/D.out` | 90.1 ± 2.5 | 87.1…92.2 |
+| `./Pascal/Delphi.out` | 104.4 ± 2.9 | 101.1…108.3 |
+| `gawk -f Awk/Gawk.awk` | 490.1 ± 1.5 | 488.7…492.5 |
+| `./Go/Go.out` | 35.4 ± 3.9 | 30.8…38.8 |
+| `groovy Groovy/Groovy.groovy 2>/dev/null` | 2147.3 ± 94.2 | 2051.8…2299.1 |
+| `java -cp Java Java7SegmentDisplays` | 359.5 ± 12.7 | 345.0…377.3 |
+| `node JavaScript/JavaScript.js` | 195.6 ± 6.5 | 188.5…205.8 |
+| `kotlin -cp Kotlin KotlinKt` | 350.5 ± 9.2 | 337.8…359.3 |
+| `lsc JavaScript/LiveScript.ls` | 278.1 ± 5.4 | 272.1…286.8 |
+| `mysql 7SegmentDisplays -Nsu travis <SQL/MySQL.sql` | 2431.5 ± 16.1 | 2410.2…2454.1 |
+| `./Pascal/Pascal.out` | 47.1 ± 1.5 | 44.7…48.5 |
+| `perl6 Perl/Perl6.p6` | 6874.9 ± 104.2 | 6810.7…7059.9 |
+| `perl Perl/Perl.pl` | 236.7 ± 2.7 | 232.2…238.9 |
+| `pwsh Shell/PowerShell.ps1` | 28021.2 ± 415.1 | 27684.8…28674.4 |
+| `python2 Python/Python2.py` | 180.7 ± 5.7 | 173.5…189.2 |
+| `python3 Python/Python3.py` | 228.0 ± 4.5 | 222.9…232.1 |
+| `Rscript R/R.r` | 1146.6 ± 18.3 | 1130.2…1176.8 |
+| `sqlite3 /tmp/7SegmentDisplays.db <SQL/SQLite.sql` | 664.4 ± 17.8 | 644.9…684.8 |
+| `scala -cp Scala Scala7SegmentDisplays` | 1349.0 ± 18.0 | 1333.3…1379.5 |
+| `ts-node JavaScript/TypeScript.ts` | 547.8 ± 6.9 | 539.2…555.7 |
+| `zsh Shell/Zsh.sh` | 4492.1 ± 71.6 | 4381.6…4552.9 |

@@ -2,7 +2,7 @@
 
 ## Rules & guidelines
 
-* Make sure your code conforms to [.editorconfig](.editorconfig).
+* Make sure your code conforms to [`.editorconfig`](.editorconfig).
 * Don't alter the coding style of existing files.
 * Keep the implementations short and simple.
 * Words containing any of `gkmqvwxzio` are invalid.
@@ -34,7 +34,9 @@ three-and-a-halfpenny
 
 * Name the file according to the language it was written in.
 * Place the file inside a folder named after the language family.
-* Don't use abbreviations for the name, unless it would be too long.
 * Add the new language to the [README](README.md#languages) (`make langs`).
-* Add any compiler/editor-generated files to [.gitignore](.gitignore).
+* Add a new target for the language to the [Makefile](Makefile), if needed.
+* Add any compiler/editor-generated files to [`.gitignore`](.gitignore).
+* Add a new test for the language in [`t/tests.json`](t/tests.json).
+    * If it cannot be tested, explain why in a comment within the file.
 

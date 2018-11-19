@@ -1,23 +1,22 @@
-function! s:GetLongest()
-    let l:longest = []
-    let l:invalid = '[gkmqvwxzio]'
-    let l:maxlen = 0
+let s:longest = []
+let s:invalid = '[gkmqvwxzio]'
+let s:maxlen = 0
 
-    for l:word in readfile('words.txt')
-        let l:wlen = len(l:word)
-        if l:wlen == l:maxlen
-            if l:word !~? l:invalid
-                let l:longest += [l:word]
-            endif
-        elseif l:wlen > l:maxlen
-            if l:word !~? l:invalid
-                let l:longest = [l:word]
-                let l:maxlen = l:wlen
-            endif
+for s:word in readfile('words.txt', 'b')
+    let s:wlen = len(s:word)
+    if s:wlen == s:maxlen
+        if s:word !~? s:invalid
+            let s:longest += [s:word]
         endif
-    endfor
-    return l:longest
-endfunction
+    elseif s:wlen > s:maxlen
+        if s:word !~? s:invalid
+            let s:longest = [s:word]
+            let s:maxlen = s:wlen
+        endif
+    endif
+endfor
 
-echo join(s:GetLongest(), "\n") ."\n"
+echo join(s:longest, "\n") ."\n"
+
+" No tests because capturing the output is tricky
 

@@ -6,14 +6,14 @@ BEGIN {
     while((getline < "words.txt") > 0) {
         wlen = length($0)
         if(wlen == maxlen && $0 !~ invalid) {
-            longest[$0] = $0
+            longest[++i] = $0
         } else if(wlen > maxlen && $0 !~ invalid) {
             delete longest
-            longest[$0] = $0
+            longest[++i] = $0
             maxlen = wlen
         }
     }
 
-    for(l in longest) print l
+    for(l in longest) print longest[l]
 }
 

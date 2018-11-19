@@ -7,7 +7,6 @@ Thumbs.db
 
 ## Editor files ##
 .idea/
-out/
 [._]*.sw[a-p]
 [._]sw[a-p]
 .netrwhist
@@ -17,9 +16,13 @@ tags
 *~
 
 ## Language files ##
+node_modules/
 __pycache__/
 META-INF/
 build/
+out/
+package-lock.json
+yarn.lock
 *.py[cod]
 *.class
 *.out

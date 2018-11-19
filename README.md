@@ -30,12 +30,16 @@ These are the currently implemented languages:
 * [LiveScript](JavaScript/LiveScript.ls)
 * [MySQL](SQL/MySQL.sql)
 * [Pascal](Pascal/Pascal.pas)
+* [Perl6](Perl/Perl6.p6)
+* [Perl](Perl/Perl.pl)
+* [PowerShell](Shell/PowerShell.ps1)
 * [Python2](Python/Python2.py)
 * [Python3](Python/Python3.py)
 * [Python](Python/Python.py)
 * [R](R/R.r)
 * [SQLite](SQL/SQLite.sql)
 * [Scala](Scala/Scala.scala)
+* [Sh](Shell/Sh.sh)
 * [TypeScript](JavaScript/TypeScript.ts)
 * [VimL](VimL/VimL.vim)
 * [Zsh](Shell/Zsh.sh)
@@ -44,11 +48,19 @@ To add an implementation in a new language,
 or improve an existing implementation,
 check [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## Tests
+
+Tests are included in [`t/tests.t`](t/tests.t). To run them
+(`make test`) you will need `perl` with the [`JSON::Parse`][JP]
+module, and a compiler/runtime environment for every language.
+
+[JP]: https://metacpan.org/pod/distribution/JSON-Parse/lib/JSON/Parse.pod
+
 ## Benchmarks
 
 You can see the current benchmarks in [BENCHMARKS.md](BENCHMARKS.md).
-To run your own benchmarks (`make && make bench`) you will need
-[hyperfine][hf] and a compiler/runtime environment for every language.
+To run your own benchmarks (`make bench`) you will need [hyperfine][hf],
+and a compiler/runtime environment for every language.
 
 [hf]: https://github.com/sharkdp/hyperfine
 
@@ -62,9 +74,7 @@ To run your own benchmarks (`make && make bench`) you will need
 
 ## TODO
 
-* More languages.
-* Tests.
-* Travis?
+* **More languages.**
 
 ## License
 

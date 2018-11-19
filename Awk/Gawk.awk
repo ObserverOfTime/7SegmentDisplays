@@ -10,14 +10,14 @@ BEGIN {
         word = words[i]
         wlen = length(word)
         if(wlen == maxlen && word !~ invalid) {
-            longest[word] = word
+            longest[++i] = word
         } else if(wlen > maxlen && word !~ invalid) {
             delete longest
-            longest[word] = word
+            longest[++i] = word
             maxlen = wlen
         }
     }
 
-    for(l in longest) print l
+    for(l in longest) print longest[l]
 }
 

@@ -1,0 +1,40 @@
+language: generic
+os: linux
+dist: xenial
+services: mysql
+addons:
+    apt:
+        update: true
+        sources: mono
+        packages:
+            - cmake
+            - g++
+            - gawk
+            - golang
+            - mono-devel
+            - openjdk-8-jdk
+            - python2.7
+            - python3
+            - r-base
+            - scala
+            - sqlite3
+            - zsh
+    snaps:
+        - name: powershell
+          classic: true
+        - name: kotlin
+          classic: true
+env:
+    global:
+        - JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+        - PERL5LIB="$HOME/perl5/lib/perl5"
+before_install:
+    - sudo -E apt-get -yq install --no-install-recommends fpc rakudo
+    - |
+        wget downloads.dlang.org/releases/2018/dmd_2.083.0-0_amd64.deb
+        sudo -E dpkg -i dmd_2.083.0-0_amd64.deb
+    - mysql -e "CREATE DATABASE IF NOT EXISTS 7SegmentDisplays;"
+    - yarn global add coffeescript ts-node typescript livescript
+install: yarn add @types/node && cpanm -qnl ~/perl5 JSON::Parse
+script: make && make test
+
