@@ -3,6 +3,7 @@
 @include "readfile"
 
 BEGIN {
+    IGNORECASE = 1
     invalid = "[gkmqvwxzio]"
     split(readfile("words.txt"), words, "\n")
 

@@ -29,6 +29,7 @@ These are the currently implemented languages:
 * [Kotlin](Kotlin/Kotlin.kt)
 * [LiveScript](JavaScript/LiveScript.ls)
 * [MySQL](SQL/MySQL.sql)
+* [Nim](Nim/Nim.nim)
 * [Pascal](Pascal/Pascal.pas)
 * [Perl6](Perl/Perl6.p6)
 * [Perl](Perl/Perl.pl)

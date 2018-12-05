@@ -4,7 +4,7 @@
 
 int main() {
     std::vector<std::string> longest;
-    std::regex invalid(".*[gkmqvwxzio].*");
+    std::regex invalid(".*[gkmqvwxzio].*", std::regex_constants::icase);
     std::ifstream words("words.txt");
     std::string word;
     long unsigned int wlen = 0, maxlen = 0;

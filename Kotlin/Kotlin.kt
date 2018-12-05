@@ -2,16 +2,16 @@ import java.io.File
 
 fun main(args: Array<String>) {
     val longest = mutableListOf<String>()
-    val invalid = ".*[gkmqvwxzio].*".toRegex()
+    val invalid = "(?i).*[gkmqvwxzio].*".toRegex()
     var maxlen = 0
 
     File("words.txt").forEachLine {
-        if(it.length == maxlen) {
-            if(!it.matches(invalid)) {
+        if (it.length == maxlen) {
+            if (!it.matches(invalid)) {
                 longest.add(it)
             }
-        } else if(it.length > maxlen) {
-            if(!it.matches(invalid)) {
+        } else if (it.length > maxlen) {
+            if (!it.matches(invalid)) {
                 longest.clear()
                 longest.add(it)
                 maxlen = it.length
@@ -19,6 +19,6 @@ fun main(args: Array<String>) {
         }
     }
 
-    longest.forEach(::println)
+    longest.forEach { println(it) }
 }
 

@@ -9,7 +9,7 @@ var
     longest: TStringList;
 
 begin
-    invalid := TRegExpr.Create('.*[gkmqvwxzio].*');
+    invalid := TRegExpr.Create('(?i).*[gkmqvwxzio].*');
     longest := TStringList.Create;
     words := TStringList.Create;
     words.LoadFromFile('words.txt');

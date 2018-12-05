@@ -4,7 +4,7 @@ import java.util.ArrayList;
 class Java7SegmentDisplays {
     public static void main(String[] args) {
         ArrayList<String> longest = new ArrayList<>();
-        String invalid = ".*[gkmqvwxzio].*";
+        String invalid = "(?i).*[gkmqvwxzio].*";
         int maxlen = 0;
 
         try (BufferedReader br = new BufferedReader(

@@ -18,9 +18,11 @@ tags
 ## Language files ##
 node_modules/
 __pycache__/
+nimcache/
 META-INF/
 build/
 out/
+package.json
 package-lock.json
 yarn.lock
 *.py[cod]

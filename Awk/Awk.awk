@@ -1,7 +1,7 @@
 #!/usr/bin/awk -f
 
 BEGIN {
-    invalid = "[gkmqvwxzio]"
+    invalid = "[GKMQVWXZIOgkmqvwxzio]"
 
     while((getline < "words.txt") > 0) {
         wlen = length($0)

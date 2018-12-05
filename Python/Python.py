@@ -3,7 +3,7 @@
 from __future__ import print_function
 from re import search
 
-invalid = lambda s: search('[gkmqvwxzio]', s)
+invalid = lambda s: search('(?i)[gkmqvwxzio]', s)
 longest = []
 maxlen = 0
 

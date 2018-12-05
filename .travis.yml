@@ -33,6 +33,9 @@ before_install:
     - |
         wget downloads.dlang.org/releases/2018/dmd_2.083.0-0_amd64.deb
         sudo -E dpkg -i dmd_2.083.0-0_amd64.deb
+    - |
+        wget launchpadlibrarian.net/336561901/nim_0.17.2-1ubuntu1_amd64.deb
+        sudo -E dpkg -i nim_0.17.2-1ubuntu1_amd64.deb
     - mysql -e "CREATE DATABASE IF NOT EXISTS 7SegmentDisplays;"
     - yarn global add coffeescript ts-node typescript livescript
 install: yarn add @types/node && cpanm -qnl ~/perl5 JSON::Parse

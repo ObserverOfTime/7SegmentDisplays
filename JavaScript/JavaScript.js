@@ -1,5 +1,5 @@
 const words = require('fs').readFileSync('words.txt');
-const invalid = (s) => /[gkmqvwxzio]/.test(s);
+const invalid = (s) => (/[gkmqvwxzio]/i).test(s);
 let longest = [], maxlen = 0;
 
 for(const word of words.toString().split('\n')) {

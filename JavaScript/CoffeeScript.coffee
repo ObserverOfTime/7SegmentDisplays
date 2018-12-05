@@ -1,5 +1,5 @@
 words = require('fs').readFileSync 'words.txt', 'utf-8'
-invalid = (s) -> /[gkmqvwxzio]/.test s
+invalid = (s) -> /[gkmqvwxzio]/i.test s
 longest = []
 maxlen = 0
 

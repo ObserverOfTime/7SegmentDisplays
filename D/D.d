@@ -1,7 +1,7 @@
 import std.stdio, std.container, std.conv, std.regex;
 
 void main() {
-    auto invalid = regex(r"[gkmqvwxzio]");
+    auto invalid = regex(r"(?i)[gkmqvwxzio]");
     auto longest = Array!string();
     int maxlen = 0;
 

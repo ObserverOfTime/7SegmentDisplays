@@ -5,7 +5,7 @@ my @longest;
 
 open my $words, '<', 'words.txt';
 while(<$words>) {
-    next if $_ =~ /[gkmqvwxzio]/;
+    next if /[gkmqvwxzio]/i;
     my $wlen = length($_);
     if($wlen == $maxlen) {
         push @longest, $_;

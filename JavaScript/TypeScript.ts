@@ -1,4 +1,4 @@
-const invalid = (s: string) => /[gkmqvwxzio]/.test(s);
+const invalid = (s: string) => (/[gkmqvwxzio]/i).test(s);
 let longest: string[] = [], maxlen: number = 0;
 
 require('fs').readFile('words.txt', (err, data) => {

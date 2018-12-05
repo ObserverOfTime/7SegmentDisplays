@@ -5,7 +5,7 @@ set(maxlen "0")
 
 foreach(word ${words})
     string(LENGTH ${word} wlen)
-    string(REGEX MATCH ".*[gkmqvwxzio].*" invalid ${word})
+    string(REGEX MATCH ".*[GKMQVWXZIOgkmqvwxzio].*" invalid ${word})
     if(wlen EQUAL maxlen AND NOT invalid)
         list(APPEND longest ${word})
     elseif(wlen GREATER maxlen AND NOT invalid)

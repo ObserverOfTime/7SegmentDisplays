@@ -1,5 +1,5 @@
 const words = require 'fs' .readFileSync 'words.txt'
-invalid = (s) -> /[gkmqvwxzio]/.test s
+invalid = (s) -> /[gkmqvwxzio]/i.test s
 longest = []
 maxlen = 0
 

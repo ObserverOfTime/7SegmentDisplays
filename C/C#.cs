@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 class CS7SegmentDisplays {
     static void Main(string[] args) {
-        Regex invalid = new Regex("[gkmqvwxzio]");
+        Regex invalid = new Regex("(?i)[gkmqvwxzio]");
         List<string> longest = new List<string>();
         int maxlen = 0;
 

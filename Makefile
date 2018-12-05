@@ -22,6 +22,10 @@ JAVACFLAGS =
 KOTLINC = kotlinc
 KOTLINCFLAGS =
 
+# Nim
+NIM = nim
+NIMFLAGS = -d:release --nimcache:$(HOME)/.cache/nimcache
+
 # Pascal & Delphi
 FPC = fpc
 PASCALFLAGS = -O3
@@ -34,7 +38,7 @@ SCALAFLAGS =
 commands = $(shell awk -F[:,] '{printf $$2" "}' t/tests.json)
 
 ## Compile all languages
-all: cpp cs d delphi go java kotlin pascal scala
+all: cpp cs d delphi go java kotlin nim pascal scala
 
 cpp: C/C++.cpp; $(CPP) $(CPPFLAGS) $< -o $(<:.cpp=.out)
 
@@ -49,6 +53,8 @@ go: Go/Go.go; $(GO) build $(GOFLAGS) -o $(<:.go=.out) $<
 java: Java/Java.java; $(JAVAC) $(JAVACFLAGS) -d Java $<
 
 kotlin: Kotlin/Kotlin.kt; $(KOTLINC) $(KOTLINCFLAGS) -d Kotlin $<
+
+nim: Nim/Nim.nim; $(NIM) compile $(NIMFLAGS) -o:$(<:.nim=.out) $<
 
 pascal: Pascal/Pascal.pas; $(FPC) $(PASCALFLAGS) $< -o$(<:.pas=.out)
 

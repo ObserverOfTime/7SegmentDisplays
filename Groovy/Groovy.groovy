@@ -3,7 +3,7 @@
 import java.io.File
 
 def longest = []
-def invalid = ".*[gkmqvwxzio].*"
+def invalid = "(?i).*[gkmqvwxzio].*"
 def maxlen = 0
 
 new File("words.txt").eachLine {

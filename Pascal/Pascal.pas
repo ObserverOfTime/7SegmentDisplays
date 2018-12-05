@@ -9,7 +9,7 @@ var
     longest: Array of String = NIL;
 
 begin
-    invalid := TRegExpr.Create('.*[gkmqvwxzio].*');
+    invalid := TRegExpr.Create('(?i).*[gkmqvwxzio].*');
     Assign(wfile, 'words.txt');
     Reset(wfile);
 
