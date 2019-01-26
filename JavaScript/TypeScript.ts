@@ -3,12 +3,12 @@ let longest: string[] = [], maxlen: number = 0;
 
 require('fs').readFile('words.txt', (err, data) => {
     for(const word of data.toString().split('\n')) {
-        if(word.length === maxlen) {
-            if(!invalid(word)) longest.push(word);
-        } else if(word.length > maxlen) {
-            if(!invalid(word)) longest = [word];
+        if(word.length === maxlen && !invalid(word)) {
+            longest.push(word);
+        } else if(word.length > maxlen && !invalid(word)) {
+            longest = [word];
+            maxlen = word.length;
         }
-        maxlen = (longest[0] || '').length;
     }
 
     console.log(longest.join('\n'));

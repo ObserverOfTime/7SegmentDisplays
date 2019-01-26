@@ -16,17 +16,13 @@ begin
     while not EOF(wfile) do begin
         ReadLn(wfile, _word);
         wlen := Length(_word);
-        if wlen = maxlen then begin
-            if not invalid.Exec(_word) then begin
-                SetLength(longest, Length(longest) + 1);
-                longest[High(longest)] := _word;
-            end
-        end else if wlen > maxlen then begin
-            if not invalid.Exec(_word) then begin
-                SetLength(longest, 1);
-                longest[0] := _word;
-                maxlen := wlen;
-            end
+        if (wlen = maxlen) and not invalid.Exec(_word) then begin
+            SetLength(longest, Length(longest) + 1);
+            longest[High(longest)] := _word;
+        end else if (wlen > maxlen) and not invalid.Exec(_word) then begin
+            SetLength(longest, 1);
+            longest[0] := _word;
+            maxlen := wlen;
         end;
     end;
 

@@ -35,6 +35,7 @@ DELPHIFLAGS = $(PASCALFLAGS)
 SCALAC = scalac
 SCALAFLAGS =
 
+benchmarks = BENCHMARKS.md
 commands = $(shell awk -F[:,] '{printf $$2" "}' t/tests.json)
 
 ## Compile all languages
@@ -64,7 +65,9 @@ scala: Scala/Scala.scala; $(SCALAC) $(SCALACFLAGS) -d Scala $<
 test: t/tests.t; prove --trap -v $< $(if $(TESTS),:: $(TESTS),)
 
 ## Run benchmarks with hyperfine
-bench: ; hyperfine -w 2 -r 5 $(commands) --export-markdown BENCHMARKS.md
+bench:
+	hyperfine -w 2 -r 5 $(commands) --export-markdown $(benchmarks)
+	@gawk -iinplace 'NR<3;NR>2{print|"sort -n -k3 -t\\|"}' $(benchmarks)
 
 ## Remove object files
 clean: ; find -name '*.o' -exec rm -v {} +

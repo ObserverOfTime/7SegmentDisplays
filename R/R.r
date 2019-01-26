@@ -2,9 +2,7 @@
 
 longest <- NULL
 maxlen <- 0
-invalid <- function(s) {
-    return(grepl("[gkmqvwxzio]", s, TRUE))
-}
+invalid <- function(s) grepl("[gkmqvwxzio]", s, TRUE)
 
 for(word in readLines("words.txt")) {
     wlen <- nchar(word)

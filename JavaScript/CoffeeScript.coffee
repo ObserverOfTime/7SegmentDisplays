@@ -4,11 +4,11 @@ longest = []
 maxlen = 0
 
 for word in words.split '\n'
-    if word.length == maxlen
-        longest.push word if !invalid word
-    else if word.length > maxlen
-        longest = [word] if !invalid word
-    maxlen = (longest[0] or '').length
+    if word.length == maxlen && !invalid word
+        longest.push word
+    else if word.length > maxlen && !invalid word
+        longest = [word]
+        maxlen = word.length
 
 console.log longest.join '\n'
 

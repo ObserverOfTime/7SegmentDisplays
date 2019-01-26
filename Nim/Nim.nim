@@ -11,13 +11,11 @@ proc invalid(s: string): bool =
 
 if open(words, "words.txt"):
     while words.readLine(word):
-        if word.len == maxlen:
-            if not invalid(word):
-                longest.add(word)
-        elif word.len > maxlen:
-            if not invalid(word):
-                longest = @[word]
-                maxlen = word.len
+        if word.len == maxlen and not invalid(word):
+            longest.add(word)
+        elif word.len > maxlen and not invalid(word):
+            longest = @[word]
+            maxlen = word.len
 
 for l in items(longest): echo l
 

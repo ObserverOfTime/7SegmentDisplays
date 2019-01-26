@@ -8,16 +8,12 @@ object Scala7SegmentDisplays {
         var maxlen: Int = 0
 
         Source.fromFile("words.txt").getLines.foreach(word =>
-            if(word.length == maxlen) {
-                if(!word.matches(invalid)) {
-                    longest.append(word)
-                }
-            } else if(word.length > maxlen) {
-                if(!word.matches(invalid)) {
-                    longest.clear
-                    longest.append(word)
-                    maxlen = word.length
-                }
+            if(word.length == maxlen && !word.matches(invalid)) {
+                longest.append(word)
+            } else if(word.length > maxlen && !word.matches(invalid)) {
+                longest.clear
+                longest.append(word)
+                maxlen = word.length
             }
         )
 

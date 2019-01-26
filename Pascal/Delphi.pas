@@ -16,16 +16,12 @@ begin
 
     for _word in words do begin
         wlen := Length(_word);
-        if wlen = maxlen then begin
-            if not invalid.Exec(_word) then begin
-                longest.Append(_word);
-            end
-        end else if wlen > maxlen then begin
-            if not invalid.Exec(_word) then begin
-                longest.Clear();
-                longest.Append(_word);
-                maxlen := wlen;
-            end
+        if (wlen = maxlen) and not invalid.Exec(_word) then begin
+            longest.Append(_word);
+        end else if (wlen > maxlen) and not invalid.Exec(_word) then begin
+            longest.Clear();
+            longest.Append(_word);
+            maxlen := wlen;
         end;
     end;
 

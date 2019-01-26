@@ -11,16 +11,12 @@ class Java7SegmentDisplays {
                     new FileReader("words.txt"))) {
             while(br.ready()) {
                 String word = br.readLine();
-                if(word.length() == maxlen) {
-                    if(!word.matches(invalid)) {
-                        longest.add(word);
-                    }
-                } else if(word.length() > maxlen) {
-                    if(!word.matches(invalid)) {
-                        longest.clear();
-                        longest.add(word);
-                        maxlen = word.length();
-                    }
+                if(word.length() == maxlen && !word.matches(invalid)) {
+                    longest.add(word);
+                } else if(word.length() > maxlen && !word.matches(invalid)) {
+                    longest.clear();
+                    longest.add(word);
+                    maxlen = word.length();
                 }
             }
         } catch(IOException e) { e.printStackTrace(); }

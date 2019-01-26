@@ -16,6 +16,7 @@ addons:
             - python2.7
             - python3
             - r-base
+            - ruby
             - scala
             - sqlite3
             - zsh
@@ -28,6 +29,7 @@ env:
     global:
         - JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
         - PERL5LIB="$HOME/perl5/lib/perl5"
+        - PATH="$PATH:/usr/lib/dart/bin:$TRAVIS_BUILD_DIR/node_modules/.bin"
 before_install:
     - sudo -E apt-get -yq install --no-install-recommends fpc rakudo
     - |
@@ -36,8 +38,11 @@ before_install:
     - |
         wget launchpadlibrarian.net/336561901/nim_0.17.2-1ubuntu1_amd64.deb
         sudo -E dpkg -i nim_0.17.2-1ubuntu1_amd64.deb
-    - mysql -e "CREATE DATABASE IF NOT EXISTS 7SegmentDisplays;"
-    - yarn global add coffeescript ts-node typescript livescript
-install: yarn add @types/node && cpanm -qnl ~/perl5 JSON::Parse
+    - |
+        wget storage.googleapis.com/dart-archive/channels/stable/release/latest/linux_packages/dart_2.1.0-1_amd64.deb
+        sudo -E dpkg -i dart_2.1.0-1_amd64.deb
+    - mysql -e "CREATE DATABASE IF NOT EXISTS 7SegmentDisplays; SET GLOBAL local_infile = 1;"
+    - yarn add @types/node coffeescript ts-node typescript livescript
+install: cpanm -qnl ~/perl5 JSON::Parse
 script: make && make test
 

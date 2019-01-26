@@ -7,21 +7,17 @@ int main() {
     std::regex invalid(".*[gkmqvwxzio].*", std::regex_constants::icase);
     std::ifstream words("words.txt");
     std::string word;
-    long unsigned int wlen = 0, maxlen = 0;
+    unsigned long wlen = 0, maxlen = 0;
 
     while(!words.eof()) {
         getline(words, word);
         wlen = word.length();
-        if(wlen == maxlen) {
-            if(!regex_match(word, invalid)) {
-                longest.push_back(word);
-            }
-        } else if(wlen > maxlen) {
-            if(!regex_match(word, invalid)) {
-                longest.clear();
-                longest.push_back(word);
-                maxlen = wlen;
-            }
+        if(wlen == maxlen && !regex_match(word, invalid)) {
+            longest.push_back(word);
+        } else if(wlen > maxlen && !regex_match(word, invalid)) {
+            longest.clear();
+            longest.push_back(word);
+            maxlen = wlen;
         }
     }
     words.close();
