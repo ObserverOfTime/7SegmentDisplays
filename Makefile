@@ -78,8 +78,9 @@ cleanall: ; find -regex '.*\.\(o\(ut\)?\|class\)' -exec rm -v {} +
 ## List all languages in markdown format
 langs:
 	@find * -mindepth 1 -type f -name '[A-Z]*.*' -not \
-		-regex '.*\.o\(ut\)?' -not -name '*.class' | \
-		awk -F[/.]  '{print "* ["$$2"]("$$0")"}' | sort
+		-regex '.*\.\(\o\(ut\)?\|class\)' -not -path \
+		'*node_modules*' -not -path '*nimcache*' | \
+		awk -F[/.] '{print "* ["$$2"]("$$0")"}' | sort
 
 ## Show this help message
 help:
