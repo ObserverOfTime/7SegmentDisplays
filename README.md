@@ -18,6 +18,7 @@ These are the currently implemented languages:
 * [C#](C/C#.cs)
 * [C++](C/C++.cpp)
 * [CMake](CMake/CMake.cmake)
+* [C](C/C.c)
 * [CoffeeScript](JavaScript/CoffeeScript.coffee)
 * [D](D/D.d)
 * [Dart](Dart/Dart.dart)

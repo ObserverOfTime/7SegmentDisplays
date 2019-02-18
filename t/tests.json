@@ -4,6 +4,7 @@
     "C#": "mono C/C#.out",
     "C++": "./C/C++.out",
     "CMake": "cmake -P CMake/CMake.cmake 2>&1",
+    "C": "./C/C.out",
     "CoffeeScript": "coffee JavaScript/CoffeeScript.coffee",
     "D": "./D/D.out",
     "Dart": "dart Dart/Dart.dart",

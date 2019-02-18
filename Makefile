@@ -1,3 +1,7 @@
+# C
+CC = gcc
+CFLAGS = -std=c99 -Ofast
+
 # C++
 CPP = g++
 CPPFLAGS = -std=c++11 -Ofast
@@ -39,7 +43,9 @@ benchmarks = BENCHMARKS.md
 commands = $(shell awk -F[:,] '{printf $$2" "}' t/tests.json)
 
 ## Compile all languages
-all: cpp cs d delphi go java kotlin nim pascal scala
+all: c cpp cs d delphi go java kotlin nim pascal scala
+
+c: C/C.c; $(CC) -D_POSIX_C_SOURCE=200809L $(CFLAGS) $< -o $(<:.c=.out)
 
 cpp: C/C++.cpp; $(CPP) $(CPPFLAGS) $< -o $(<:.cpp=.out)
 
