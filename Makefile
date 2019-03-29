@@ -35,6 +35,10 @@ FPC = fpc
 PASCALFLAGS = -O3
 DELPHIFLAGS = $(PASCALFLAGS)
 
+# Rust
+RUSTC = rustc
+RUSTFLAGS = -O
+
 # Scala
 SCALAC = scalac
 SCALAFLAGS =
@@ -43,7 +47,7 @@ benchmarks = BENCHMARKS.md
 commands = $(shell awk -F[:,] '{printf $$2" "}' t/tests.json)
 
 ## Compile all languages
-all: c cpp cs d delphi go java kotlin nim pascal scala
+all: c cpp cs d delphi go java kotlin nim pascal rust scala
 
 c: C/C.c; $(CC) -D_POSIX_C_SOURCE=200809L $(CFLAGS) $< -o $(<:.c=.out)
 
@@ -64,6 +68,8 @@ kotlin: Kotlin/Kotlin.kt; $(KOTLINC) $(KOTLINCFLAGS) -d Kotlin $<
 nim: Nim/Nim.nim; $(NIM) compile $(NIMFLAGS) -o:$(<:.nim=.out) $<
 
 pascal: Pascal/Pascal.pas; $(FPC) $(PASCALFLAGS) $< -o$(<:.pas=.out)
+
+rust: Rust/rust.rs; $(RUSTC) $(RUSTFLAGS) -o Rust $<
 
 scala: Scala/Scala.scala; $(SCALAC) $(SCALACFLAGS) -d Scala $<
 
