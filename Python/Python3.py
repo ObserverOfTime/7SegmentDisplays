@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-from re import search
-
-invalid = lambda s: search('(?i)[gkmqvwxzio]', s)
+invalid = lambda w: any(c in w.lower() for c in 'gkmqvwxzio')
 longest = []
 maxlen = 0
 

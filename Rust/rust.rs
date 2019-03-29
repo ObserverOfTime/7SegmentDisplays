@@ -1,27 +1,20 @@
-use std::collections::HashSet;
-use std::fs;
-
 fn main() {
-    // Open the file
-    let text = fs::read_to_string("words.txt").unwrap();
+    let words = std::fs::read_to_string("words.txt").unwrap();
+    let invalid = |w: &str| "gkmqvwxzio".chars()
+        .any(|c| w.to_lowercase().contains(c));
+    let mut longest: Vec<&str> = vec![];
+    let mut maxlen = 0;
 
-    // Define the necessary variables
-    let bad: HashSet<char> = String::from("gkmqvwxzio").chars().collect();
-    let mut longest: Vec<&str> = vec![""];
-
-    // Let the games begin
-    for word in text.lines() {
-        if word.len() < longest[0].len() || word.chars().any(|c| bad.contains(&c)) {
-            continue;
-        } else {
-            if word.len() > longest[0].len() {
+    for word in words.lines() {
+        if !(word.len() < maxlen || invalid(word)) {
+            if word.len() > maxlen {
                 longest = vec![];
+                maxlen = word.len();
             }
             longest.push(word);
         }
     }
 
-    for result in longest.iter() {
-        println!("{}", result);
-    }
+    longest.iter().for_each(|l| println!("{}", l));
 }
+

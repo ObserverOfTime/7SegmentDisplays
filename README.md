@@ -41,6 +41,7 @@ These are the currently implemented languages:
 * [Python](Python/Python.py)
 * [R](R/R.r)
 * [Ruby](Ruby/Ruby.ru)
+* [Rust](Rust/rust.rs)
 * [SQLite](SQL/SQLite.sql)
 * [Scala](Scala/Scala.scala)
 * [Sh](Shell/Sh.sh)

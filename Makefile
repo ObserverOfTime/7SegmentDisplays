@@ -1,6 +1,6 @@
 # C
 CC = gcc
-CFLAGS = -std=c99 -Ofast
+CFLAGS = -std=c99 -Ofast -D_POSIX_C_SOURCE=200809L
 
 # C++
 CPP = g++
@@ -37,11 +37,11 @@ DELPHIFLAGS = $(PASCALFLAGS)
 
 # Rust
 RUSTC = rustc
-RUSTFLAGS = -O
+RUSTCFLAGS = -O
 
 # Scala
 SCALAC = scalac
-SCALAFLAGS =
+SCALACFLAGS =
 
 benchmarks = BENCHMARKS.md
 commands = $(shell awk -F[:,] '{printf $$2" "}' t/tests.json)
@@ -49,15 +49,15 @@ commands = $(shell awk -F[:,] '{printf $$2" "}' t/tests.json)
 ## Compile all languages
 all: c cpp cs d delphi go java kotlin nim pascal rust scala
 
-c: C/C.c; $(CC) -D_POSIX_C_SOURCE=200809L $(CFLAGS) $< -o $(<:.c=.out)
+c: C/C.c; $(CC) $(CFLAGS) -o $(<:.c=.out) $<
 
-cpp: C/C++.cpp; $(CPP) $(CPPFLAGS) $< -o $(<:.cpp=.out)
+cpp: C/C++.cpp; $(CPP) $(CPPFLAGS) -o $(<:.cpp=.out) $<
 
-cs: C/C\#.cs; $(CSC) $(CSCFLAGS) $< -out:$(<:.cs=.out)
+cs: C/C\#.cs; $(CSC) $(CSCFLAGS) -out:$(<:.cs=.out) $<
 
-d: D/D.d; $(DC) $(DCFLAGS) $< -of=$(<:.d=.out)
+d: D/D.d; $(DC) $(DCFLAGS) -of=$(<:.d=.out) $<
 
-delphi: Pascal/Delphi.pas; $(FPC) $(DELPHIFLAGS) $< -o$(<:.pas=.out)
+delphi: Pascal/Delphi.pas; $(FPC) $(DELPHIFLAGS) -o$(<:.pas=.out) $<
 
 go: Go/Go.go; $(GO) build $(GOFLAGS) -o $(<:.go=.out) $<
 
@@ -67,9 +67,9 @@ kotlin: Kotlin/Kotlin.kt; $(KOTLINC) $(KOTLINCFLAGS) -d Kotlin $<
 
 nim: Nim/Nim.nim; $(NIM) compile $(NIMFLAGS) -o:$(<:.nim=.out) $<
 
-pascal: Pascal/Pascal.pas; $(FPC) $(PASCALFLAGS) $< -o$(<:.pas=.out)
+pascal: Pascal/Pascal.pas; $(FPC) $(PASCALFLAGS) -o$(<:.pas=.out) $<
 
-rust: Rust/rust.rs; $(RUSTC) $(RUSTFLAGS) -o Rust $<
+rust: Rust/rust.rs; $(RUSTC) $(RUSTCFLAGS) -o$(<:.rs=.out) $<
 
 scala: Scala/Scala.scala; $(SCALAC) $(SCALACFLAGS) -d Scala $<
 
