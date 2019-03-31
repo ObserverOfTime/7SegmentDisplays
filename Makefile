@@ -1,47 +1,48 @@
 # C
 CC = gcc
-CFLAGS = -std=c99 -Ofast -D_POSIX_C_SOURCE=200809L
+CFLAGS = -std=c99 -Ofast -march=native -D_POSIX_C_SOURCE=200809L
 
 # C++
 CPP = g++
-CPPFLAGS = -std=c++11 -Ofast
+CPPFLAGS = -std=c++11 -Ofast -march=native
 
 # C#
 CSC = mcs
-CSCFLAGS = -o+
+CSCFLAGS = -o+ -platform:x64
 
 # D
 DC = dmd
-DCFLAGS = -O -release -inline
+DCFLAGS = -O -release -mcpu=native
 
 # Go
-GO = go
+GO = env GOOS=linux GOARCH=amd64 go
 GOFLAGS =
 
 # Java
 JAVAC = javac
-JAVACFLAGS =
+JAVACFLAGS = -source 8 -target 8
 
 # Kotlin
 KOTLINC = kotlinc
-KOTLINCFLAGS =
+KOTLINCFLAGS = -no-reflect -jvm-target 1.8
 
 # Nim
 NIM = nim
-NIMFLAGS = -d:release --nimcache:$(HOME)/.cache/nimcache
+NIMFLAGS = -d:release --os:linux --cpu:amd64 \
+	--app:console --nimcache:$(HOME)/.cache/nimcache
 
 # Pascal & Delphi
 FPC = fpc
-PASCALFLAGS = -O3
-DELPHIFLAGS = $(PASCALFLAGS)
+PASCALFLAGS = -Tlinux -Px86_64 -O2
+DELPHIFLAGS = -Mdelphi $(PASCALFLAGS)
 
 # Rust
 RUSTC = rustc
-RUSTCFLAGS = -O
+RUSTCFLAGS = -O -C target-cpu=native
 
 # Scala
 SCALAC = scalac
-SCALACFLAGS =
+SCALACFLAGS = -opt:l:method
 
 benchmarks = BENCHMARKS.md
 commands = $(shell awk -F[:,] '{printf $$2" "}' t/tests.json)
@@ -69,7 +70,7 @@ nim: Nim/Nim.nim; $(NIM) compile $(NIMFLAGS) -o:$(<:.nim=.out) $<
 
 pascal: Pascal/Pascal.pas; $(FPC) $(PASCALFLAGS) -o$(<:.pas=.out) $<
 
-rust: Rust/rust.rs; $(RUSTC) $(RUSTCFLAGS) -o$(<:.rs=.out) $<
+rust: Rust/rust.rs; $(RUSTC) $(RUSTCFLAGS) -o $(<:.rs=.out) $<
 
 scala: Scala/Scala.scala; $(SCALAC) $(SCALACFLAGS) -d Scala $<
 
@@ -78,7 +79,7 @@ test: t/tests.t; prove --trap -v $< $(if $(TESTS),:: $(TESTS),)
 
 ## Run benchmarks with hyperfine
 bench:
-	hyperfine -w 2 -r 5 $(commands) --export-markdown $(benchmarks)
+	hyperfine -w 3 -r 7 $(commands) --export-markdown $(benchmarks)
 	@gawk -iinplace 'NR<3;NR>2{print|"sort -n -k3 -t\\|"}' $(benchmarks)
 
 ## Remove object files
