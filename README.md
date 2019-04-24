@@ -1,4 +1,6 @@
 # 7SegmentDisplays
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FObserverOfTime%2F7SegmentDisplays.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FObserverOfTime%2F7SegmentDisplays?ref=badge_shield)
+
 
 Print the longest English word(s) in [dwyl/english-words][words]
 that can be written with a [Seven-segment display][SSD].<br>
@@ -85,3 +87,6 @@ and a compiler/runtime environment for every language.
 
 Licensed under [GLWTPL](LICENSE).
 
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FObserverOfTime%2F7SegmentDisplays.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FObserverOfTime%2F7SegmentDisplays?ref=badge_large)
