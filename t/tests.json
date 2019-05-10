@@ -28,7 +28,7 @@
     "Rust": "Rust/rust.out",
     "SQLite": "sqlite3 /tmp/7SegmentDisplays.db <SQL/SQLite.sql",
     "Scala": "scala -cp Scala Scala7SegmentDisplays",
-    "TypeScript": "ts-node JavaScript/TypeScript.ts",
+    "TypeScript": "ts-node --skip-project -T JavaScript/TypeScript.ts",
     "Zsh": "zsh -f Shell/Zsh.sh"
 }
 

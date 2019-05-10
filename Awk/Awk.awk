@@ -1,5 +1,3 @@
-#!/usr/bin/awk -f
-
 BEGIN {
     invalid = "[GKMQVWXZIOgkmqvwxzio]"
 

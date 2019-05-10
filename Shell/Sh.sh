@@ -1,5 +1,3 @@
-#!/bin/sh
-
 maxlen=0
 
 grep -Eiv '[gkmqvwxzio]' words.txt | {

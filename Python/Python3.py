@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 invalid = lambda w: any(c in w.lower() for c in 'gkmqvwxzio')
 longest = []
 maxlen = 0

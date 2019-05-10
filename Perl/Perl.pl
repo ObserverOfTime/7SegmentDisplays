@@ -1,5 +1,3 @@
-#!/usr/bin/env perl
-
 my $maxlen = 0;
 my @longest;
 

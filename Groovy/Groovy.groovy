@@ -1,5 +1,3 @@
-#!/usr/bin/env groovy
-
 def longest = []
 def invalid = "(?i).*[gkmqvwxzio].*"
 def maxlen = 0

@@ -1,5 +1,3 @@
-#!/usr/bin/cmake -P
-
 file(STRINGS "words.txt" words)
 set(maxlen "0")
 

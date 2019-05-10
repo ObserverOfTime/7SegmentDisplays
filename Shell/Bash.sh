@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 mapfile -t words <words.txt
 declare -a longest
 invalid='[gkmqvwxzio]'

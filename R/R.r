@@ -1,5 +1,3 @@
-#!/usr/bin/env Rscript
-
 longest <- NULL
 maxlen <- 0
 invalid <- function(s) grepl("[gkmqvwxzio]", s, TRUE)

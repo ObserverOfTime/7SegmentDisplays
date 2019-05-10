@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 typeset -a longest
 invalid='[gkmqvwxzio]'
 

@@ -1,15 +1,14 @@
-const words = require('fs').readFileSync('words.txt');
-const invalid = (s) => (/[gkmqvwxzio]/i).test(s);
+const invalid = (s) => /[gkmqvwxzio]/i.test(s);
 let longest = [], maxlen = 0;
 
-for(const word of words.toString().split('\n')) {
+require('readline').createInterface({
+    input: require('fs').createReadStream('words.txt')
+}).on('line', word => {
     if(word.length === maxlen && !invalid(word)) {
         longest.push(word);
     } else if(word.length > maxlen && !invalid(word)) {
         longest = [word];
         maxlen = word.length;
     }
-}
-
-console.log(longest.join('\n'));
+}).on('close', () => console.log(longest.join('\n')));
 
