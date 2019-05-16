@@ -1,4 +1,4 @@
-# 7SegmentDisplays
+# 7SegmentDisplays [![Travis](https://img.shields.io/travis/ObserverOfTime/7SegmentDisplays.svg?logo=travis)](https://travis-ci.org/ObserverOfTime/7SegmentDisplays)
 
 Print the longest English word(s) in [dwyl/english-words][words]
 that can be written with a [Seven-segment display][SSD].<br>

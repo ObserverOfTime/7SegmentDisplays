@@ -14,6 +14,10 @@ CSCFLAGS = -o+ -platform:x64
 DC = dmd
 DCFLAGS = -O -release -mcpu=native
 
+# Dart
+DART = dart2aot
+DARTFLAGS =
+
 # Go
 GO = env GOOS=linux GOARCH=amd64 go
 GOFLAGS =
@@ -42,13 +46,13 @@ RUSTCFLAGS = -O -C target-cpu=native
 
 # Scala
 SCALAC = scalac
-SCALACFLAGS = -opt:l:method
+SCALACFLAGS =
 
 benchmarks = BENCHMARKS.md
 commands = $(shell awk -F[:,] '{printf $$2" "}' t/tests.json)
 
 ## Compile all languages
-all: c cpp cs d delphi go java kotlin nim pascal rust scala
+all: c cpp cs d dart delphi go java kotlin nim pascal rust scala
 
 c: C/C.c; $(CC) $(CFLAGS) -o $(<:.c=.out) $<
 
@@ -57,6 +61,8 @@ cpp: C/C++.cpp; $(CPP) $(CPPFLAGS) -o $(<:.cpp=.out) $<
 cs: C/C\#.cs; $(CSC) $(CSCFLAGS) -out:$(<:.cs=.out) $<
 
 d: D/D.d; $(DC) $(DCFLAGS) -of=$(<:.d=.out) $<
+
+dart: Dart/Dart.dart; $(DART) $(DARTFLAGS) $< $(<:.dart=.out)
 
 delphi: Pascal/Delphi.pas; $(FPC) $(DELPHIFLAGS) -o$(<:.pas=.out) $<
 
@@ -82,17 +88,14 @@ bench:
 	hyperfine -w 3 -r 7 $(commands) --export-markdown $(benchmarks)
 	@gawk -iinplace 'NR<3;NR>2{print|"sort -n -k3 -t\\|"}' $(benchmarks)
 
-## Remove object files
-clean: ; find -name '*.o' -exec rm -v {} +
-
 ## Remove all generated files
-cleanall: ; find -regex '.*\.\(o\(ut\)?\|class\)' -exec rm -v {} +
+clean: ; find -regex '.*\.\(o\(ut\)?\|class\|dill\)' -exec rm -v {} +
 
 ## List all languages in markdown format
 langs:
 	@find * -mindepth 1 -type f -name '[A-Z]*.*' -not \
-		-regex '.*\.\(\o\(ut\)?\|class\)' -not -path \
-		'*node_modules*' -not -path '*nimcache*' | \
+		-regex '.*\.\(\o\(ut\)?\|class\|dill\)' -not -path \
+		'*node_modules*' -not -path '*cache*' | \
 		awk -F[/.] '{print "* ["$$2"]("$$0")"}' | sort
 
 ## Show this help message

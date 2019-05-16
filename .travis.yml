@@ -21,26 +21,24 @@ addons:
             - sqlite3
             - zsh
     snaps:
-        - name: powershell
-          classic: true
         - name: kotlin
-          classic: true
+          confinement: classic
 env:
     global:
         - JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
         - PERL5LIB="$HOME/perl5/lib/perl5"
-        - PATH="$PATH:/usr/lib/dart/bin:$TRAVIS_BUILD_DIR/node_modules/.bin"
+        - PATH="$PATH:$HOME/dart-sdk/bin:$TRAVIS_BUILD_DIR/node_modules/.bin"
 before_install:
     - sudo -E apt-get -yq install --no-install-recommends fpc rakudo rustc
     - |
-        wget downloads.dlang.org/releases/2018/dmd_2.083.0-0_amd64.deb
-        sudo -E dpkg -i dmd_2.083.0-0_amd64.deb
+        wget downloads.dlang.org/releases/2.x/2.086.0/dmd_2.086.0-0_amd64.deb
+        sudo -E dpkg -i "${_##*/}"
     - |
         wget launchpadlibrarian.net/336561901/nim_0.17.2-1ubuntu1_amd64.deb
-        sudo -E dpkg -i nim_0.17.2-1ubuntu1_amd64.deb
+        sudo -E dpkg -i "${_##*/}"
     - |
-        wget storage.googleapis.com/dart-archive/channels/stable/release/latest/linux_packages/dart_2.2.0-1_amd64.deb
-        sudo -E dpkg -i dart_2.2.0-1_amd64.deb
+        wget storage.googleapis.com/dart-archive/channels/dev/release/2.3.1-dev.0.0/sdk/dartsdk-linux-x64-release.zip
+        unzip -q "${_##*/}" -d "$HOME"
     - mysql -e "CREATE DATABASE IF NOT EXISTS 7SegmentDisplays; SET GLOBAL local_infile = 1;"
     - yarn add @types/node coffeescript ts-node typescript livescript
 install: cpanm -qnl ~/perl5 JSON::Parse

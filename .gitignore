@@ -29,4 +29,5 @@ yarn.lock
 *.class
 *.out
 *.o
+*.dill
 

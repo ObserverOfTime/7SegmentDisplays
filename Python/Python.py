@@ -14,6 +14,5 @@ with open('words.txt', 'r') as words:
 
 print('\n'.join(longest))
 
-
 # No tests because it's covered by Python3
 
