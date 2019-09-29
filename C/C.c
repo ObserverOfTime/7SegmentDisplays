@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define VALID_WORD regexec(&invalid, word, 0, NULL, 0) == REG_NOMATCH
+#define VALID(word) regexec(&invalid, word, 0, NULL, 0) == REG_NOMATCH
 
 int main() {
     char *word, **tmp, **words = NULL;
@@ -14,12 +14,12 @@ int main() {
     regcomp(&invalid, ".*[gkmqvwxzio].*", REG_ICASE|REG_NOSUB);
     while(getline(&word, &wlen, txt) != -1) {
         wlen = strlen(word);
-        if(wlen == maxlen && VALID_WORD) {
+        if(wlen == maxlen && VALID(word)) {
             tmp = words;
             words = (char **) realloc(tmp, wlen * ++num);
             *(words + num - 1) = (char *) malloc(wlen);
             strncpy(*(words + num - 1), word, wlen);
-        } else if(wlen > maxlen && VALID_WORD) {
+        } else if(wlen > maxlen && VALID(word)) {
             words = (char **) realloc(words, wlen);
             *words = (char *) malloc(wlen);
             strncpy(*words, word, wlen);
@@ -34,4 +34,3 @@ int main() {
     free(words);
     return 0;
 }
-

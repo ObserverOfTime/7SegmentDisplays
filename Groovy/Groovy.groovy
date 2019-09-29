@@ -13,4 +13,3 @@ new java.io.File("words.txt").eachLine {
 }
 
 longest.each { println it }
-

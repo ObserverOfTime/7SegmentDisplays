@@ -18,4 +18,3 @@ if open(words, "words.txt"):
             maxlen = word.len
 
 for l in items(longest): echo l
-

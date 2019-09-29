@@ -16,4 +16,3 @@ grep -Eiv '[gkmqvwxzio]' words.txt | {
 }
 
 # No tests because it takes around 2 minutes to run
-

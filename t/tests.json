@@ -31,4 +31,3 @@
     "TypeScript": "ts-node --skip-project -T JavaScript/TypeScript.ts",
     "Zsh": "zsh -f Shell/Zsh.sh"
 }
-

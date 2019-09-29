@@ -22,4 +22,3 @@ func main() {
 
     fmt.Println(strings.Join(longest, "\n"))
 }
-

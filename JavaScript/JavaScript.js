@@ -11,4 +11,3 @@ require('readline').createInterface({
         maxlen = word.length;
     }
 }).on('close', () => console.log(longest.join('\n')));
-

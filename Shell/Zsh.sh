@@ -10,4 +10,3 @@ foreach word ($(<words.txt))
 end
 
 printf '%s\n' "${(@)longest}"
-

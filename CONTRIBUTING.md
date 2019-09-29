@@ -39,4 +39,3 @@ three-and-a-halfpenny
 * Add any compiler/editor-generated files to [`.gitignore`](.gitignore).
 * Add a new test for the language in [`t/tests.json`](t/tests.json).
     * If it cannot be tested, explain why in a comment within the file.
-

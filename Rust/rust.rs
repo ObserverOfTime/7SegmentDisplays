@@ -17,4 +17,3 @@ fn main() {
 
     longest.iter().for_each(|l| println!("{}", l));
 }
-

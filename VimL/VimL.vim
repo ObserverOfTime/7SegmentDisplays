@@ -15,4 +15,3 @@ endfor
 echo join(s:longest, "\n") ."\n"
 
 " No tests because capturing the output is tricky
-

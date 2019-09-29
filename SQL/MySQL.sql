@@ -6,4 +6,3 @@ WHERE word NOT RLIKE '[gkmqvwxzio]';
 SELECT word FROM words
 WHERE word NOT RLIKE '[gkmqvwxzio]'
 AND LENGTH(word) = @maxlen;
-

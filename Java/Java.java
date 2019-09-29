@@ -24,4 +24,3 @@ class Java7SegmentDisplays {
         longest.forEach(System.out::println);
     }
 }
-

@@ -15,4 +15,3 @@ while(<$words>) {
 close $words;
 
 print $_ for @longest;
-

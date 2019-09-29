@@ -1,11 +1,10 @@
 language: generic
 os: linux
-dist: xenial
+dist: bionic
 services: mysql
 addons:
     apt:
         update: true
-        sources: mono
         packages:
             - cmake
             - g++
@@ -31,7 +30,7 @@ env:
 before_install:
     - sudo -E apt-get -yq install --no-install-recommends fpc rakudo rustc
     - |
-        wget downloads.dlang.org/releases/2.x/2.086.0/dmd_2.086.0-0_amd64.deb
+        wget downloads.dlang.org/releases/2.x/2.088.0/dmd_2.088.0-0_amd64.deb
         sudo -E dpkg -i "${_##*/}"
     - |
         wget launchpadlibrarian.net/336561901/nim_0.17.2-1ubuntu1_amd64.deb
@@ -43,4 +42,3 @@ before_install:
     - yarn add @types/node coffeescript ts-node typescript livescript
 install: cpanm -qnl ~/perl5 JSON::Parse
 script: make && make test
-

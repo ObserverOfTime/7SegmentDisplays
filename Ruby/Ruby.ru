@@ -13,4 +13,3 @@ File.open("words.txt").each_line do |word|
 end
 
 puts longest
-

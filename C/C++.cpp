@@ -25,4 +25,3 @@ int main() {
     for(const auto &l : longest) std::cout << l << std::endl;
     return 0;
 }
-

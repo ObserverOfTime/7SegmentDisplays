@@ -15,4 +15,3 @@ endforeach()
 foreach(l ${longest})
     message(${l})
 endforeach()
-

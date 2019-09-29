@@ -13,4 +13,3 @@ Get-Content words.txt | ForEach-Object {
 Write-Output ($longest -join "`n")
 
 # No tests because it takes around half a minute to run
-

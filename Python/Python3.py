@@ -1,14 +1,13 @@
 invalid = lambda w: any(c in w.lower() for c in 'gkmqvwxzio')
-longest = []
+longest = ''
 maxlen = 0
 
 with open('words.txt', 'r') as words:
-    for word in words.read().splitlines():
+    for word in words.readlines():
         if len(word) == maxlen and not invalid(word):
-            longest.append(word)
+            longest += word
         if len(word) > maxlen and not invalid(word):
-            longest = [word]
+            longest = word
             maxlen = len(word)
 
-print('\n'.join(longest))
-
+print(longest, end='')

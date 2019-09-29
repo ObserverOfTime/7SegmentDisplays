@@ -15,4 +15,3 @@ fun main(args: Array<String>) {
 
     longest.forEach { println(it) }
 }
-

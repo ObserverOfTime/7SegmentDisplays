@@ -11,4 +11,3 @@ for word in "${words[@]}"; do
 done
 
 printf '%s\n' "${longest[@]}"
-

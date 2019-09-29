@@ -18,4 +18,3 @@ while(my($lang, $cmd) = each %$tests) {
     @ARGV && next unless grep(/^\Q$lang\E$/i, @ARGV);
     is(`$cmd`, $expected, "$lang: $cmd");
 }
-

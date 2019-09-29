@@ -2,4 +2,3 @@
 
 Makefile linguist-detectable=false
 words.txt linguist-vendored
-

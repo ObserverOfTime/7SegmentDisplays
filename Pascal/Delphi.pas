@@ -28,4 +28,3 @@ begin
     Write(longest.Text);
     longest.Free;
 end.
-

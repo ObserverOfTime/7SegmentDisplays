@@ -13,4 +13,3 @@ for(word in readLines("words.txt")) {
 }
 
 cat(longest, sep="\n")
-

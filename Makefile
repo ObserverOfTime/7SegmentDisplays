@@ -102,4 +102,3 @@ langs:
 help:
 	@awk '/^##/{help=substr($$0, 3); getline; \
 		print $$1help}' $(lastword $(MAKEFILE_LIST))
-

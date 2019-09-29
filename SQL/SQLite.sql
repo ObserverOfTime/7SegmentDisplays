@@ -7,4 +7,3 @@ AND LENGTH(word) = (
     SELECT MAX(LENGTH(word)) FROM words
     WHERE LOWER(word) NOT GLOB '*[gkmqvwxzio]*'
 );
-

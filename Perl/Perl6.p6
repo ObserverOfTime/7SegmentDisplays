@@ -13,4 +13,3 @@ for 'words.txt'.IO.lines {
 }
 
 .say for @longest;
-

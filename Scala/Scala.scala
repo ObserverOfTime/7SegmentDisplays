@@ -20,4 +20,3 @@ object Scala7SegmentDisplays {
         longest.foreach { println }
     }
 }
-

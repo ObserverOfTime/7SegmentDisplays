@@ -28,4 +28,3 @@ begin
 
     for _word in longest do WriteLn(_word);
 end.
-

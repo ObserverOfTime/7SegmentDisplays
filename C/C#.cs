@@ -22,4 +22,3 @@ class CS7SegmentDisplays {
         longest.ForEach(System.Console.WriteLine);
     }
 }
-
