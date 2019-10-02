@@ -9,6 +9,7 @@
     "D": "D/D.out",
     "Dart": "dartaotruntime Dart/Dart.out",
     "Delphi": "Pascal/Delphi.out",
+    "Erlang": "escript -n Erlang/erlang.erl",
     "Gawk": "gawk -f Awk/Gawk.awk",
     "Go": "Go/Go.out",
     "Groovy": "groovy Groovy/Groovy.groovy 2>/dev/null",
