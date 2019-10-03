@@ -35,6 +35,7 @@ These are the currently implemented languages:
 * [Pascal](Pascal/Pascal.pas)
 * [Perl6](Perl/Perl6.p6)
 * [Perl](Perl/Perl.pl)
+* [PHP](PHP/PHP.php)
 * [PowerShell](Shell/PowerShell.ps1)
 * [Python2](Python/Python2.py)
 * [Python3](Python/Python3.py)
