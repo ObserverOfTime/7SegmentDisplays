@@ -2,7 +2,7 @@
 
 function invalid($string)
 {
-    return preg_match('/[gkmqvwxzio]/i', $string) == true;
+    return preg_match('/[gkmqvwxzio]/i', $string);
 }
 
 $longest = '';
