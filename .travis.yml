@@ -12,6 +12,7 @@ addons:
             - golang
             - mono-devel
             - openjdk-8-jdk
+            - php
             - python2.7
             - python3
             - r-base
