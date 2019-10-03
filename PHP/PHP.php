@@ -1,7 +1,6 @@
 <?php
 
-function invalid($string)
-{
+function invalid($string) {
     return preg_match('/[gkmqvwxzio]/i', $string);
 }
 
