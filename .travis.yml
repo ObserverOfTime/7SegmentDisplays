@@ -23,6 +23,8 @@ addons:
     snaps:
         - name: kotlin
           confinement: classic
+        - name: julia
+          confinement: classic
 env:
     global:
         - JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
