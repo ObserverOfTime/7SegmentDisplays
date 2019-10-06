@@ -1,5 +1,5 @@
 -module(erlang).
-
+-mode(compile).
 -export([main/1]).
 
 main(_Args) ->
@@ -9,10 +9,8 @@ main(_Args) ->
     [io:format("~s~n", [Word]) || Word <- Longest].
 
 find_longest_words(Words) ->
-    Invalid = "gkmqvwxzio",
-    InvalidWithUppercase = Invalid ++ [C-32 || C <- Invalid],
-    Pattern = binary:compile_pattern([<<C>>|| C <- InvalidWithUppercase]),
-    find_longest_words(Words, Pattern, 0, []).
+    Invalid = binary:compile_pattern([<<C>>|| C <- "gkmqvwxzioGKMQVWXZIO"]),
+    find_longest_words(Words, Invalid, 0, []).
 
 find_longest_words([], _, _, Acc) ->
     lists:reverse(Acc);
