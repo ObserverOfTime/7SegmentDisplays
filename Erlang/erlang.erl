@@ -1,5 +1,4 @@
 -module(erlang).
--mode(compile).
 -export([main/1]).
 
 main(_Args) ->

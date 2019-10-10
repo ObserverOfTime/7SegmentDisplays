@@ -2,6 +2,10 @@ language: generic
 os: linux
 dist: bionic
 services: mysql
+branches:
+    except: [gh-pages]
+git:
+    depth: 1
 addons:
     apt:
         update: true
@@ -44,5 +48,26 @@ before_install:
         unzip -q "${_##*/}" -d "$HOME"
     - mysql -e "CREATE DATABASE IF NOT EXISTS 7SegmentDisplays; SET GLOBAL local_infile = 1;"
     - yarn add @types/node coffeescript ts-node typescript livescript
-install: cpanm -qnl ~/perl5 JSON::Parse
-script: make && make test
+install:
+    - cpanm -qnl ~/perl5 JSON::Parse
+script:
+    - make
+    - make test
+before_deploy:
+    - |
+        wget github.com/sharkdp/hyperfine/releases/download/v1.7.0/hyperfine_1.7.0_amd64.deb
+        sudo -E dpkg -i hyperfine_1.7.0_amd64.deb
+    - make bench
+deploy:
+    provider: pages
+    skip_cleanup: true
+    keep_history: false
+    email: deploy@travis-ci.org
+    name: Deployment Bot
+    commit_message: Deploy %{target_branch}
+    github_token:
+        secure: "KXMurcS8Oj3UYgZXM8sfTijLGJkBQqCxkE1MMpB9EkvOlrjfo+LiDT4UCGt1yHgo3YCWFQuxvgrTowy5BxJBrJUU8pHZFjZ/I26YQDRw5QO+AbRNIUpnTBHMjACycCHwY9bfDxAfj0y7Sru6PadWMfS9Jlsnmr1ufK1njZOIgTxc9J7pCOLkPjcQNEorewjuZK9BsYE7ffrg5IIXWUPuTeNmpa3C8bYXD/FE4PN6I72a7BMzFS/a/j4ZkIFj12M126e3JZb+Ng9j5crFyCGmbfvsZgkZcZxt86ykuyJzHtJNUsCPuRHl8Xc21mxCtcksenl/4voiGnCKj0+8nkyjI91J80+SeGxAP63psWcL69Tu341wDD+38h4ezZP7aWcQHMOEXQGtXx6MCwrH5KsM7G+ZGr5leTcQsfzkb/D13tsngXjzvDFxsaB9j+FHkNqfk57ZuXGeJ4re6jrQWMrqsDTDHg1QNF4Rt0gx/3hBTFN7FjAJe4xtP5j4Bi8oezHAMWcJECHod5y4xjDxY/VS+CoEihZyUiHjzo6IKuzw3Jmq4M485BJtJ+OeGATvF77VI2Cky0UNtl39CAcWQR5RzSDnzQGtE0QwO2cTfrscmm4NZwP0FApi7XxdVNKrqXedVnFv2HG/sckRXxWWSJuXKLUHUp+lNhgRFh5jXtEKzMU="
+    on:
+        branch: master
+    edge:
+        branch: master

@@ -70,7 +70,7 @@ go: Go/Go.go; $(GO) build $(GOFLAGS) -o $(<:.go=.out) $<
 
 java: Java/Java.java; $(JAVAC) $(JAVACFLAGS) -d Java $<
 
-kotlin: Kotlin/Kotlin.kt; $(KOTLINC) $(KOTLINCFLAGS) -d Kotlin $<
+kotlin: Java/Kotlin.kt; $(KOTLINC) $(KOTLINCFLAGS) -d Java $<
 
 nim: Nim/Nim.nim; $(NIM) compile $(NIMFLAGS) -o:$(<:.nim=.out) $<
 
@@ -78,14 +78,14 @@ pascal: Pascal/Pascal.pas; $(FPC) $(PASCALFLAGS) -o$(<:.pas=.out) $<
 
 rust: Rust/rust.rs; $(RUSTC) $(RUSTCFLAGS) -o $(<:.rs=.out) $<
 
-scala: Scala/Scala.scala; $(SCALAC) $(SCALACFLAGS) -d Scala $<
+scala: Java/Scala.scala; $(SCALAC) $(SCALACFLAGS) -d Java $<
 
 ## Run language tests
 test: t/tests.t; prove --trap -v $< $(if $(TESTS),:: $(TESTS),)
 
 ## Run benchmarks with hyperfine
 bench:
-	hyperfine -w 3 -r 7 $(commands) --export-markdown $(benchmarks)
+	hyperfine -s basic -w 3 -r 7 $(commands) --export-markdown $(benchmarks)
 	@gawk -iinplace 'NR<3;NR>2{print|"sort -n -k3 -t\\|"}' $(benchmarks)
 
 ## Remove all generated files
@@ -93,12 +93,16 @@ clean: ; find -regex '.*\.\(o\(ut\)?\|class\|dill\)' -exec rm -v {} +
 
 ## List all languages in markdown format
 langs:
-	@find * -mindepth 1 -type f -name '[A-Z]*.*' -not \
-		-regex '.*\.\(\o\(ut\)?\|class\|dill\)' -not -path \
-		'*node_modules*' -not -path '*cache*' | \
-		awk -F[/.] '{print "* ["$$2"]("$$0")"}' | sort
+	@find * -mindepth 1 -type f \
+		-not -path '*test*' -not -path '*node_modules*' \
+		-not -path '*cache*' -not -path '*META-INF*' \
+		-not -regex '.*\.\(o\(ut\)?\|class\|dill\)' \
+		| gawk -F[/.] '{print $$2"|* [" \
+			toupper(substr($$2, 1, 1)) \
+			substr($$2, 2)"]("$$0")"}' \
+		| sort -df | cut -d'|' -f2
 
 ## Show this help message
 help:
-	@awk '/^##/{help=substr($$0, 3); getline; \
+	@gawk '/^##/{help=substr($$0, 3); getline; \
 		print $$1help}' $(lastword $(MAKEFILE_LIST))

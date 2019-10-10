@@ -1,3 +1,5 @@
+@file:JvmName("Kotlin7SegmentDisplays")
+
 fun main(args: Array<String>) {
     val longest = mutableListOf<String>()
     val invalid = "(?i).*[gkmqvwxzio].*".toRegex()

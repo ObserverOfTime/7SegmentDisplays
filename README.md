@@ -15,10 +15,10 @@ These are the currently implemented languages:
 
 * [Awk](Awk/Awk.awk)
 * [Bash](Shell/Bash.sh)
-* [C#](C/C#.cs)
-* [C++](C/C++.cpp)
-* [CMake](CMake/CMake.cmake)
 * [C](C/C.c)
+* [C++](C/C++.cpp)
+* [C#](C/C#.cs)
+* [CMake](CMake/CMake.cmake)
 * [CoffeeScript](JavaScript/CoffeeScript.coffee)
 * [D](D/D.d)
 * [Dart](Dart/Dart.dart)
@@ -26,35 +26,35 @@ These are the currently implemented languages:
 * [Erlang](Erlang/erlang.erl)
 * [Gawk](Awk/Gawk.awk)
 * [Go](Go/Go.go)
-* [Groovy](Groovy/Groovy.groovy)
-* [JavaScript](JavaScript/JavaScript.js)
+* [Groovy](Java/Groovy.groovy)
 * [Java](Java/Java.java)
+* [JavaScript](JavaScript/JavaScript.js)
 * [Julia](Julia/Julia.jl)
-* [Kotlin](Kotlin/Kotlin.kt)
+* [Kotlin](Java/Kotlin.kt)
 * [LiveScript](JavaScript/LiveScript.ls)
 * [MySQL](SQL/MySQL.sql)
 * [Nim](Nim/Nim.nim)
 * [Pascal](Pascal/Pascal.pas)
-* [Perl6](Perl/Perl6.p6)
 * [Perl](Perl/Perl.pl)
+* [Perl6](Perl/Perl6.p6)
 * [PHP](PHP/PHP.php)
 * [PowerShell](Shell/PowerShell.ps1)
+* [Python](Python/Python.py)
 * [Python2](Python/Python2.py)
 * [Python3](Python/Python3.py)
-* [Python](Python/Python.py)
 * [R](R/R.r)
 * [Ruby](Ruby/Ruby.ru)
 * [Rust](Rust/rust.rs)
-* [SQLite](SQL/SQLite.sql)
-* [Scala](Scala/Scala.scala)
+* [Scala](Java/Scala.scala)
 * [Sh](Shell/Sh.sh)
+* [SQLite](SQL/SQLite.sql)
 * [TypeScript](JavaScript/TypeScript.ts)
 * [VimL](VimL/VimL.vim)
 * [Zsh](Shell/Zsh.sh)
 
 To add an implementation in a new language,
 or improve an existing implementation,
-check [CONTRIBUTING.md](CONTRIBUTING.md).
+check [CONTRIBUTING](CONTRIBUTING.md).
 
 ## Tests
 
@@ -66,7 +66,7 @@ module, and a compiler/runtime environment for every language.
 
 ## Benchmarks
 
-You can see the current benchmarks in [BENCHMARKS.md](BENCHMARKS.md).
+You can see the current benchmarks in [BENCHMARKS](BENCHMARKS.md).
 To run your own benchmarks (`make bench`) you will need [hyperfine][hf],
 and a compiler/runtime environment for every language.
 
@@ -86,4 +86,4 @@ and a compiler/runtime environment for every language.
 
 ## License
 
-Licensed under [GLWTPL](LICENSE).
+Licensed under [GLWTPL](LICENSE.txt).

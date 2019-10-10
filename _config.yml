@@ -1,5 +1,4 @@
 theme: jekyll-theme-hacker
-exclude: words.txt
 include:
     - CONTRIBUTING.md
     - BENCHMARKS.md
