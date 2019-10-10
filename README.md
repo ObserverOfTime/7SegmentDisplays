@@ -29,6 +29,7 @@ These are the currently implemented languages:
 * [Groovy](Groovy/Groovy.groovy)
 * [JavaScript](JavaScript/JavaScript.js)
 * [Java](Java/Java.java)
+* [Julia](Julia/Julia.jl)
 * [Kotlin](Kotlin/Kotlin.kt)
 * [LiveScript](JavaScript/LiveScript.ls)
 * [MySQL](SQL/MySQL.sql)

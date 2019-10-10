@@ -15,6 +15,7 @@
     "Groovy": "groovy Groovy/Groovy.groovy 2>/dev/null",
     "Java": "java -cp Java Java7SegmentDisplays",
     "JavaScript": "node JavaScript/JavaScript.js",
+    "Julia": "julia Julia/Julia.jl",
     "Kotlin": "kotlin -cp Kotlin KotlinKt",
     "LiveScript": "lsc JavaScript/LiveScript.ls",
     "MySQL": "mysql 7SegmentDisplays -Nsu travis <SQL/MySQL.sql",
