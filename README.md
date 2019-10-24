@@ -32,6 +32,7 @@ These are the currently implemented languages:
 * [Julia](Julia/Julia.jl)
 * [Kotlin](Java/Kotlin.kt)
 * [LiveScript](JavaScript/LiveScript.ls)
+* [Lua](Lua/Lua.lua)
 * [MySQL](SQL/MySQL.sql)
 * [Nim](Nim/Nim.nim)
 * [Pascal](Pascal/Pascal.pas)

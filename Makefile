@@ -81,7 +81,7 @@ rust: Rust/rust.rs; $(RUSTC) $(RUSTCFLAGS) -o $(<:.rs=.out) $<
 scala: Java/Scala.scala; $(SCALAC) $(SCALACFLAGS) -d Java $<
 
 ## Run language tests
-test: t/tests.t; prove --trap -v $< $(if $(TESTS),:: $(TESTS),)
+test: t/tests.t; prove --trap -v $< $(if $(LANGS),:: $(LANGS),)
 
 ## Run benchmarks with hyperfine
 bench:

@@ -18,6 +18,7 @@
     "Julia": "julia Julia/Julia.jl",
     "Kotlin": "kotlin -cp Java Kotlin7SegmentDisplays",
     "LiveScript": "lsc JavaScript/LiveScript.ls",
+    "Lua": "lua Lua/Lua.lua",
     "MySQL": "mysql 7SegmentDisplays -Nsu travis <SQL/MySQL.sql",
     "Nim": "Nim/Nim.out",
     "Pascal": "Pascal/Pascal.out",
