@@ -39,6 +39,7 @@ These are the currently implemented languages:
 * [Perl](Perl/Perl.pl)
 * [Perl6](Perl/Perl6.p6)
 * [PHP](PHP/PHP.php)
+* [PostgreSQL](SQL/PostgreSQL.sql)
 * [PowerShell](Shell/PowerShell.ps1)
 * [Python](Python/Python.py)
 * [Python2](Python/Python2.py)

@@ -1,7 +1,7 @@
 language: generic
 os: linux
 dist: bionic
-services: mysql
+services: [mysql, postgresql]
 branches:
     except: [gh-pages]
 git:
@@ -20,7 +20,7 @@ addons:
             - openjdk-8-jdk
             - php
             - python2.7
-            - python3
+            - python3.8
             - r-base
             - ruby
             - scala
@@ -39,25 +39,29 @@ env:
 before_install:
     - sudo -E apt-get -yq install --no-install-recommends fpc rakudo rustc
     - |
-        wget downloads.dlang.org/releases/2.x/2.088.0/dmd_2.088.0-0_amd64.deb
+        wget downloads.dlang.org/releases/2.x/2.090.1/dmd_2.090.1-0_amd64.deb
         sudo -E dpkg -i "${_##*/}"
     - |
-        wget launchpadlibrarian.net/336561901/nim_0.17.2-1ubuntu1_amd64.deb
+        wget launchpadlibrarian.net/409928317/nim_0.19.4-1_amd64.deb
         sudo -E dpkg -i "${_##*/}"
     - |
-        wget storage.googleapis.com/dart-archive/channels/dev/release/2.3.1-dev.0.0/sdk/dartsdk-linux-x64-release.zip
+        wget storage.googleapis.com/dart-archive/channels/stable/release/2.7.1/sdk/dartsdk-linux-x64-release.zip
         unzip -q "${_##*/}" -d "$HOME"
-    - mysql -e "CREATE DATABASE IF NOT EXISTS 7SegmentDisplays; SET GLOBAL local_infile = 1;"
+    - |
+        psql -c 'DROP DATABASE IF EXISTS "7SegmentDisplays";'
+        psql -c 'CREATE DATABASE "7SegmentDisplays";'
+    - |
+        mysql -e 'CREATE DATABASE IF NOT EXISTS 7SegmentDisplays;'
+        mysql -e 'SET GLOBAL local_infile = 1;'
     - yarn add @types/node coffeescript ts-node typescript livescript
 install:
     - cpanm -qnl ~/perl5 JSON::Parse
 script:
-    - make
-    - make test
+    - make all test
 before_deploy:
     - |
-        wget github.com/sharkdp/hyperfine/releases/download/v1.7.0/hyperfine_1.7.0_amd64.deb
-        sudo -E dpkg -i hyperfine_1.7.0_amd64.deb
+        wget github.com/sharkdp/hyperfine/releases/download/v1.9.0/hyperfine_1.9.0_amd64.deb
+        sudo -E dpkg -i "${_##*/}"
     - make bench
 deploy:
     provider: pages

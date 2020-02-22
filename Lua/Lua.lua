@@ -1,10 +1,9 @@
 local words = {}
 local maxlen = 0
-local invalid = '[gkmqvwxzioGKMQVWXZIO]'
-local txt = io.open('words.txt', 'r')
+local invalid = '[gkmqvwxzio]'
 
-for word in txt:lines() do
-    if not word:find(invalid) then
+for word in io.lines('words.txt') do
+    if not word:lower():find(invalid) then
         if word:len() == maxlen then
             table.insert(words, word)
         elseif word:len() > maxlen then
@@ -13,6 +12,5 @@ for word in txt:lines() do
         end
     end
 end
-txt:close()
 
 print(table.concat(words, '\n'))

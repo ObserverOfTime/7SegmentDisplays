@@ -15,7 +15,7 @@ DC = dmd
 DCFLAGS = -O -release -mcpu=native
 
 # Dart
-DART = dart2aot
+DART = dart2native
 DARTFLAGS =
 
 # Go
@@ -62,7 +62,7 @@ cs: C/C\#.cs; $(CSC) $(CSCFLAGS) -out:$(<:.cs=.out) $<
 
 d: D/D.d; $(DC) $(DCFLAGS) -of=$(<:.d=.out) $<
 
-dart: Dart/Dart.dart; $(DART) $(DARTFLAGS) $< $(<:.dart=.out)
+dart: Dart/Dart.dart; $(DART) $(DARTFLAGS) $< -o $(<:.dart=.out)
 
 delphi: Pascal/Delphi.pas; $(FPC) $(DELPHIFLAGS) -o$(<:.pas=.out) $<
 
