@@ -1,9 +1,7 @@
-# 7SegmentDisplays [![Travis](https://img.shields.io/travis/ObserverOfTime/7SegmentDisplays.svg?logo=travis)](https://travis-ci.org/ObserverOfTime/7SegmentDisplays)
+# 7SegmentDisplays [![Travis](https://img.shields.io/travis/ObserverOfTime/7SegmentDisplays.svg?logo=travis)](https://travis-ci.com/ObserverOfTime/7SegmentDisplays)
 
-Print the longest English word(s) in [dwyl/english-words][words]
-that can be written with a [Seven-segment display][SSD].<br>
-Based on Tom Scott's [The Basics S2E1][TB21]
-and implemented in multiple languages.
+Print the longest [English word(s)][words] that can be written with a [Seven-segment display][SSD].
+<br/>Based on Tom Scott's [The Basics S2E1][TB21] and implemented in multiple languages.
 
 [words]: https://github.com/dwyl/english-words
 [SSD]: https://en.wikipedia.org/wiki/Seven-segment_display
@@ -42,8 +40,6 @@ These are the currently implemented languages:
 * [PostgreSQL](SQL/PostgreSQL.sql)
 * [PowerShell](Shell/PowerShell.ps1)
 * [Python](Python/Python.py)
-* [Python2](Python/Python2.py)
-* [Python3](Python/Python3.py)
 * [R](R/R.r)
 * [Ruby](Ruby/Ruby.ru)
 * [Rust](Rust/rust.rs)

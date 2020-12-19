@@ -9,12 +9,12 @@ int main() {
     std::string word;
     unsigned long wlen = 0, maxlen = 0;
 
-    while(!words.eof()) {
+    while (!words.eof()) {
         getline(words, word);
         wlen = word.length();
-        if(wlen == maxlen && !regex_match(word, invalid)) {
+        if (wlen == maxlen && !regex_match(word, invalid)) {
             longest.push_back(word);
-        } else if(wlen > maxlen && !regex_match(word, invalid)) {
+        } else if (wlen > maxlen && !regex_match(word, invalid)) {
             longest.clear();
             longest.push_back(word);
             maxlen = wlen;
@@ -22,6 +22,5 @@ int main() {
     }
     words.close();
 
-    for(const auto &l : longest) std::cout << l << std::endl;
-    return 0;
+    for (const auto &l : longest) std::cout << l << std::endl;
 }

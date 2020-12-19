@@ -1,6 +1,6 @@
 @file:JvmName("Kotlin7SegmentDisplays")
 
-fun main(args: Array<String>) {
+fun main() {
     val longest = mutableListOf<String>()
     val invalid = "(?i).*[gkmqvwxzio].*".toRegex()
     var maxlen = 0
@@ -15,5 +15,5 @@ fun main(args: Array<String>) {
         }
     }
 
-    longest.forEach { println(it) }
+    longest.forEach(::println)
 }

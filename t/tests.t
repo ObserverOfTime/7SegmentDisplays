@@ -12,7 +12,7 @@ EOF
 
 plan tests => @ARGV ? $#ARGV + 1 : scalar keys %$tests;
 
-while(my($lang, $cmd) = each %$tests) {
+while (my($lang, $cmd) = each %$tests) {
     # If arguments are passed, run only the
     # tests for the languages listed in them
     @ARGV && next unless grep(/^\Q$lang\E$/i, @ARGV);

@@ -1,4 +1,4 @@
-import nre
+from nre import contains, re
 
 var
     longest: seq[string]
@@ -9,12 +9,12 @@ var
 proc invalid(s: string): bool =
     s.contains(re"(?i)[gkmqvwxzio]")
 
-if open(words, "words.txt"):
-    while words.readLine(word):
-        if word.len == maxlen and not invalid(word):
-            longest.add(word)
-        elif word.len > maxlen and not invalid(word):
-            longest = @[word]
-            maxlen = word.len
+discard open(words, "words.txt")
+while words.readLine(word):
+    if word.len == maxlen and not invalid(word):
+        longest.add(word)
+    elif word.len > maxlen and not invalid(word):
+        longest = @[word]
+        maxlen = word.len
 
 for l in items(longest): echo l

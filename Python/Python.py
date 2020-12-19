@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 invalid = lambda w: any(c in w.lower() for c in 'gkmqvwxzio')
 longest = []
 maxlen = 0
@@ -13,5 +11,3 @@ with open('words.txt', 'r') as words:
             maxlen = len(word)
 
 print('\n'.join(longest))
-
-# No tests because it's covered by Python3

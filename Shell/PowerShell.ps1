@@ -2,9 +2,9 @@ $invalid = ".*[gkmqvwxzio].*"
 $maxlen = 0
 
 Get-Content words.txt | ForEach-Object {
-    if($_.Length -eq $maxlen -and $_ -notmatch $invalid) {
+    if ($_.Length -eq $maxlen -and $_ -notmatch $invalid) {
         $longest += $_
-    } elseif($_.Length -gt $maxlen -and $_ -notmatch $invalid) {
+    } elseif ($_.Length -gt $maxlen -and $_ -notmatch $invalid) {
         $longest = @($_)
         $maxlen = $_.Length
     }

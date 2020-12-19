@@ -12,7 +12,8 @@ int main() {
     int num = 0;
     regex_t invalid;
     regcomp(&invalid, ".*[gkmqvwxzio].*", REG_ICASE|REG_NOSUB);
-    while(getline(&word, &wlen, txt) != -1) {
+
+    while (getline(&word, &wlen, txt) != -1) {
         wlen = strlen(word);
         if(wlen == maxlen && VALID(word)) {
             tmp = words;
@@ -30,7 +31,7 @@ int main() {
     fclose(txt);
     free(word);
     regfree(&invalid);
-    for(int i = 0; i < num; ++i) printf("%s", *(words + i));
+
+    for (int i = 0; i < num; ++i) printf("%s", *(words + i));
     free(words);
-    return 0;
 }

@@ -24,11 +24,11 @@ GOFLAGS =
 
 # Java
 JAVAC = javac
-JAVACFLAGS = -source 8 -target 8
+JAVACFLAGS = -source 11 -target 11
 
 # Kotlin
 KOTLINC = kotlinc
-KOTLINCFLAGS = -no-reflect -jvm-target 1.8
+KOTLINCFLAGS = -no-reflect -jvm-target 11
 
 # Nim
 NIM = nim
@@ -46,7 +46,7 @@ RUSTCFLAGS = -O -C target-cpu=native
 
 # Scala
 SCALAC = scalac
-SCALACFLAGS =
+SCALACFLAGS = -target:11 -opt:l:method
 
 benchmarks = BENCHMARKS.md
 commands = $(shell awk -F[:,] '{printf $$2" "}' t/tests.json)
