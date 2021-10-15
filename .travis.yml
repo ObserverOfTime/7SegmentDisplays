@@ -2,14 +2,13 @@ language: generic
 os: linux
 dist: bionic
 services: [mysql, postgresql]
-branches:
-    except: [gh-pages]
-git:
-    depth: 1
+branches: {except: [gh-pages]}
+git: {depth: 1}
 addons:
   apt:
       update: true
       packages:
+          - elixir
           - erlang
           - fpc
           - gawk
@@ -32,15 +31,15 @@ env:
         - PATH="$PATH:/usr/lib/dart/bin:$TRAVIS_BUILD_DIR/node_modules/.bin"
 before_install:
     - |
-        wget -q https://downloads.lightbend.com/scala/2.13.4/scala-2.13.4.deb
+        wget -q https://downloads.lightbend.com/scala/2.13.6/scala-2.13.6.deb
         sudo -E dpkg -i "${_##*/}"
     - |
-        wget -q http://downloads.dlang.org/releases/2021/dmd_2.095.0-0_amd64.deb
+        wget -q http://downloads.dlang.org/releases/2021/dmd_2.098.0-0_amd64.deb
         sudo -E dpkg -i "${_##*/}"
     - |
-        wget -q https://storage.googleapis.com/dart-archive/channels/stable/release/latest/linux_packages/dart_2.10.5-1_amd64.deb
+        wget -q https://storage.googleapis.com/dart-archive/channels/stable/release/2.14.4/linux_packages/dart_2.14.4-1_amd64.deb
         sudo -E dpkg -i "${_##*/}"
-    - yarn add @types/node coffeescript livescript ts-node typescript
+    - nvm use 12 && yarn add @types/node coffeescript livescript ts-node typescript
 install:
     - cpanm -qnl ~/.local/share/perl5 JSON::Parse
 before_script:
@@ -65,9 +64,5 @@ deploy:
     email: deploy@travis-ci.org
     name: Deployment Bot
     commit_message: Deploy %{target_branch}
-    token:
-        secure: "KXMurcS8Oj3UYgZXM8sfTijLGJkBQqCxkE1MMpB9EkvOlrjfo+LiDT4UCGt1yHgo3YCWFQuxvgrTowy5BxJBrJUU8pHZFjZ/I26YQDRw5QO+AbRNIUpnTBHMjACycCHwY9bfDxAfj0y7Sru6PadWMfS9Jlsnmr1ufK1njZOIgTxc9J7pCOLkPjcQNEorewjuZK9BsYE7ffrg5IIXWUPuTeNmpa3C8bYXD/FE4PN6I72a7BMzFS/a/j4ZkIFj12M126e3JZb+Ng9j5crFyCGmbfvsZgkZcZxt86ykuyJzHtJNUsCPuRHl8Xc21mxCtcksenl/4voiGnCKj0+8nkyjI91J80+SeGxAP63psWcL69Tu341wDD+38h4ezZP7aWcQHMOEXQGtXx6MCwrH5KsM7G+ZGr5leTcQsfzkb/D13tsngXjzvDFxsaB9j+FHkNqfk57ZuXGeJ4re6jrQWMrqsDTDHg1QNF4Rt0gx/3hBTFN7FjAJe4xtP5j4Bi8oezHAMWcJECHod5y4xjDxY/VS+CoEihZyUiHjzo6IKuzw3Jmq4M485BJtJ+OeGATvF77VI2Cky0UNtl39CAcWQR5RzSDnzQGtE0QwO2cTfrscmm4NZwP0FApi7XxdVNKrqXedVnFv2HG/sckRXxWWSJuXKLUHUp+lNhgRFh5jXtEKzMU="
-    on:
-        branch: master
-    edge:
-        branch: master
+    github_token: $GH_TOKEN
+    on: {branch: master}

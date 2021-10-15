@@ -1,7 +1,7 @@
 import 'dart:io';
 
 main() async {
-    final longest = List<String>();
+    final longest = List<String>.empty(growable: true);
     final invalid = RegExp(r'[gkmqvwxio]', caseSensitive: false);
     var maxlen = 0;
 

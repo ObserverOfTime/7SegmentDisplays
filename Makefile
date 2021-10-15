@@ -15,7 +15,7 @@ DC = dmd
 DCFLAGS = -O -release -mcpu=native
 
 # Dart
-DART = dart2native
+DART = dart compile exe
 DARTFLAGS =
 
 # Go
