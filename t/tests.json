@@ -9,6 +9,7 @@
     "D": "D/D.out",
     "Dart": "Dart/Dart.out",
     "Delphi": "Pascal/Delphi.out",
+    "Elixir": "elixir Elixir/elixir.ex",
     "Erlang": "escript -c Erlang/erlang.erl",
     "Gawk": "gawk -f Awk/Gawk.awk",
     "Go": "Go/Go.out",
