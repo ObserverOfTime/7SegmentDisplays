@@ -21,7 +21,7 @@ These are the currently implemented languages:
 * [D](D/D.d)
 * [Dart](Dart/Dart.dart)
 * [Delphi](Pascal/Delphi.pas)
-* [Elixir](Elixir/elixir.ex)
+* [Elixir](Erlang/elixir.ex)
 * [Erlang](Erlang/erlang.erl)
 * [Gawk](Awk/Gawk.awk)
 * [Go](Go/Go.go)
