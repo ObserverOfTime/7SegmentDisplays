@@ -19,8 +19,8 @@ DART = dart compile exe
 DARTFLAGS =
 
 # Go
-GO = env GOOS=linux GOARCH=amd64 go
-GOFLAGS =
+GO = go build
+GOFLAGS = GOOS=linux GOARCH=amd64
 
 # Java
 JAVAC = javac
@@ -31,7 +31,7 @@ KOTLINC = kotlinc
 KOTLINCFLAGS = -no-reflect -jvm-target 11
 
 # Nim
-NIM = nim
+NIM = nim compile
 NIMFLAGS = -d:release --os:linux --cpu:amd64 \
 	--app:console --nimcache:$(HOME)/.cache/nimcache
 
@@ -48,11 +48,15 @@ RUSTCFLAGS = -O -C target-cpu=native
 SCALAC = scalac
 SCALACFLAGS = -target:11 -opt:l:method
 
+# Vala
+VALAC = valac
+VALACFLAGS = -X -Ofast -X -march=native --disable-version-header
+
 benchmarks = BENCHMARKS.md
 commands = $(shell awk -F[:,] '{printf $$2" "}' t/tests.json)
 
 ## Compile all languages
-all: c cpp cs d dart delphi go java kotlin nim pascal rust scala
+all: c cpp cs d dart delphi go java kotlin nim pascal rust scala vala
 
 c: C/C.c; $(CC) $(CFLAGS) -o $(<:.c=.out) $<
 
@@ -66,19 +70,21 @@ dart: Dart/Dart.dart; $(DART) $(DARTFLAGS) $< -o $(<:.dart=.out)
 
 delphi: Pascal/Delphi.pas; $(FPC) $(DELPHIFLAGS) -o$(<:.pas=.out) $<
 
-go: Go/Go.go; $(GO) build $(GOFLAGS) -o $(<:.go=.out) $<
+go: Go/Go.go; env $(GOFLAGS) $(GO) -o $(<:.go=.out) $<
 
 java: Java/Java.java; $(JAVAC) $(JAVACFLAGS) -d Java $<
 
 kotlin: Java/Kotlin.kt; $(KOTLINC) $(KOTLINCFLAGS) -d Java $<
 
-nim: Nim/Nim.nim; $(NIM) compile $(NIMFLAGS) -o:$(<:.nim=.out) $<
+nim: Nim/Nim.nim; $(NIM) $(NIMFLAGS) -o:$(<:.nim=.out) $<
 
 pascal: Pascal/Pascal.pas; $(FPC) $(PASCALFLAGS) -o$(<:.pas=.out) $<
 
 rust: Rust/rust.rs; $(RUSTC) $(RUSTCFLAGS) -o $(<:.rs=.out) $<
 
 scala: Java/Scala.scala; $(SCALAC) $(SCALACFLAGS) -d Java $<
+
+vala: C/Vala.vala; $(VALAC) $(VALACFLAGS) -o $(<:.vala=.out) $<
 
 ## Run language tests
 test: t/tests.t; prove --trap -v $< $(if $(LANGS),:: $(LANGS),)

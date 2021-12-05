@@ -17,4 +17,4 @@ while words.readLine(word):
         longest = @[word]
         maxlen = word.len
 
-for l in items(longest): echo l
+for w in items(longest): echo w

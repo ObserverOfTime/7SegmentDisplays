@@ -19,6 +19,7 @@ addons:
           - rakudo
           - rustc
           - sqlite3
+          - valac
           - zsh
   snaps:
       - name: julia
@@ -57,12 +58,13 @@ before_deploy:
         sudo -E dpkg -i "${_##*/}"
     - make bench
 deploy:
-    provider: pages
-    strategy: git
-    cleanup: false
-    keep_history: false
-    email: deploy@travis-ci.org
-    name: Deployment Bot
-    commit_message: Deploy %{target_branch}
-    github_token: $GH_TOKEN
+    provider: script
+    script: >-
+        env GH_REPO=github.com/ObserverOfTime/7SegmentDisplays.git
+        git remote set-url origin https://${GH_TOKEN}@${GH_REPO} &&
+        git config user.name 'Travis CI [bot]' &&
+        git config user.email 'deploy@travis-ci.org' &&
+        git checkout --orphan pages && git add . &&
+        git commit -m 'Deploy gh-pages' &&
+        git push -f origin pages:gh-pages
     on: {branch: master}

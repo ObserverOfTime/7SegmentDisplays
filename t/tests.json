@@ -34,5 +34,6 @@
     "SQLite": "sqlite3 /tmp/7SegmentDisplays.db <SQL/SQLite.sql",
     "Scala": "scala -cp Java Scala7SegmentDisplays",
     "TypeScript": "ts-node --skip-project -T JavaScript/TypeScript.ts",
+    "Vala": "./C/Vala.out",
     "Zsh": "zsh -f Shell/Zsh.sh"
 }
