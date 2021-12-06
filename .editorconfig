@@ -14,5 +14,9 @@ indent_style = tab
 indent_size = 8
 max_line_length =
 
-[.travis.yml]
+[.github/workflows/build.yml]
+max_line_length =
+indent_size = 2
+
+[t/tests.json]
 max_line_length =

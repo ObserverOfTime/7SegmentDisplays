@@ -20,13 +20,13 @@
     "Kotlin": "kotlin -cp Java Kotlin7SegmentDisplays",
     "LiveScript": "lsc JavaScript/LiveScript.ls",
     "Lua": "lua5.3 Lua/Lua.lua",
-    "MySQL": "mysql 7SegmentDisplays -Nsu travis <SQL/MySQL.sql",
+    "MySQL": "mysql 7SegmentDisplays -Ns <SQL/MySQL.sql",
     "Nim": "Nim/Nim.out",
     "Pascal": "Pascal/Pascal.out",
     "Perl6": "perl6 Perl/Perl6.p6",
     "Perl": "perl Perl/Perl.pl",
     "PHP": "php -n PHP/PHP.php",
-    "PostgreSQL": "psql -qtAX -U postgres -d 7SegmentDisplays -f SQL/PostgreSQL.sql",
+    "PostgreSQL": "psql -d 7SegmentDisplays -qtAX -f SQL/PostgreSQL.sql",
     "Python": "python3 Python/Python.py",
     "R": "Rscript --vanilla R/R.r",
     "Ruby": "ruby Ruby/Ruby.ru",
@@ -34,6 +34,6 @@
     "SQLite": "sqlite3 /tmp/7SegmentDisplays.db <SQL/SQLite.sql",
     "Scala": "scala -cp Java Scala7SegmentDisplays",
     "TypeScript": "ts-node --skip-project -T JavaScript/TypeScript.ts",
-    "Vala": "./C/Vala.out",
+    "Vala": "C/Vala.out",
     "Zsh": "zsh -f Shell/Zsh.sh"
 }

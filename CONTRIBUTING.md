@@ -36,6 +36,7 @@ three-and-a-halfpenny
 * Place the file inside a folder named after the language family.
 * Add the new language to the [README](README.md#languages) (`make langs`).
 * Add a new target for the language to the [Makefile](Makefile), if needed.
+* Add any required packages or steps to the [workflow](.github/workflows/build.yml).
 * Add any compiler/editor-generated files to [`.gitignore`](.gitignore).
 * Add a new test for the language in [`t/tests.json`](t/tests.json).
     * If it cannot be tested, explain why in a comment within the file.

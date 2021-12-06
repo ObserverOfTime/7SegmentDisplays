@@ -1,4 +1,4 @@
-# 7SegmentDisplays [![Travis](https://img.shields.io/travis/ObserverOfTime/7SegmentDisplays.svg?logo=travis)](https://travis-ci.com/ObserverOfTime/7SegmentDisplays)
+# 7SegmentDisplays [![build](https://github.com/ObserverOfTime/7SegmentDisplays/actions/workflows/build.yml/badge.svg)](https://github.com/ObserverOfTime/7SegmentDisplays/actions/workflows/build.yml)
 
 Print the longest [English word(s)][words] that can be written with a [Seven-segment display][SSD].
 <br/>Based on Tom Scott's [The Basics S2E1][TB21] and implemented in multiple languages.
@@ -48,6 +48,7 @@ These are the currently implemented languages:
 * [Sh](Shell/Sh.sh)
 * [SQLite](SQL/SQLite.sql)
 * [TypeScript](JavaScript/TypeScript.ts)
+* [Vala](C/Vala.vala)
 * [VimL](VimL/VimL.vim)
 * [Zsh](Shell/Zsh.sh)
 
@@ -81,7 +82,7 @@ and a compiler/runtime environment for every language.
 
 ## TODO
 
-* **More languages.**
+* [**More languages.**](https://github.com/ObserverOfTime/7SegmentDisplays/issues/3)
 
 ## License
 

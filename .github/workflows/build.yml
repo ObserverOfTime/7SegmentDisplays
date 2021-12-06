@@ -1,0 +1,86 @@
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up cache
+        uses: actions/cache@v2
+        with:
+          path: /var/apt/cache/archives
+          key: ${{runner.os}}-packages
+      - name: Install apt packages
+        run: |-
+          sudo apt-get -q update
+          sudo apt-get $APT_OPTS install $PACKAGES
+        env:
+          APT_OPTS: >-
+            -yq --no-install-suggests --no-install-recommends
+          PACKAGES: >-
+            coffeescript
+            elixir
+            fpc
+            gawk
+            groovy
+            libjson-parse-perl
+            lua5.3
+            nim
+            node-typescript
+            r-base
+            rakudo
+            valac
+            zsh
+      - name: Install npm packages
+        run: npm i -g @types/node livescript ts-node
+      - name: Install Dart SDK
+        uses: dart-lang/setup-dart@v1
+      - name: Install DMD
+        uses: dlang-community/setup-dlang@v1
+      - name: Install Scala
+        run: curl -JLO $DEB && sudo dpkg -i scala-2.13.7.deb
+        env:
+          DEB: https://downloads.lightbend.com/scala/2.13.7/scala-2.13.7.deb
+      - name: Install hyperfine
+        run: curl -JLO $DEB && sudo dpkg -i hyperfine_1.12.0_amd64.deb
+        env:
+          DEB: https://git.io/hyperfine-1.12
+      - name: Set up PostgreSQL
+        run: |-
+          sudo systemctl start postgresql.service && pg_isready
+          sudo -u postgres createuser --superuser $USER
+          sudo -u postgres createdb 7SegmentDisplays
+      - name: Set up MySQL
+        run: |-
+          sudo -E sh -c 'printf "$MYSQL_CNF" >>/etc/mysql/my.cnf'
+          sudo systemctl start mysql.service && mysqladmin ping
+          mysql -e 'CREATE DATABASE 7SegmentDisplays;'
+        env:
+          MYSQL_CNF: |
+            [client]
+            user=root
+            password=root
+            loose-local-infile=1
+            [mysqld]
+            local_infile=1
+            secure-file-priv=
+      - name: Compile programs
+        run: make all
+      - name: Run tests
+        run: make test
+      - name: Run benchmarks
+        run: make bench
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: .
+          force_orphan: true
+          enable_jekyll: true
+          user_name: github-actions[bot]
+          github_token: ${{github.token}}
+          full_commit_message: Deploy gh-pages
+          user_email: github-actions[bot]@users.noreply.github.com
