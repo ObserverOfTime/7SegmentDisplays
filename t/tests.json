@@ -29,7 +29,7 @@
     "PostgreSQL": "psql -d 7SegmentDisplays -qtAX -f SQL/PostgreSQL.sql",
     "Python": "python3 Python/Python.py",
     "R": "Rscript --vanilla R/R.r",
-    "Ruby": "ruby Ruby/Ruby.ru",
+    "Ruby": "ruby Ruby/Ruby.rb",
     "Rust": "Rust/rust.out",
     "SQLite": "sqlite3 /tmp/7SegmentDisplays.db <SQL/SQLite.sql",
     "Scala": "scala -cp Java Scala7SegmentDisplays",
