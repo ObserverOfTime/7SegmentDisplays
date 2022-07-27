@@ -19,6 +19,7 @@ These are the currently implemented languages:
 * [CMake](CMake/CMake.cmake)
 * [CoffeeScript](JavaScript/CoffeeScript.coffee)
 * [D](D/D.d)
+* [Crystal](Crystal/Crystal.cr)
 * [Dart](Dart/Dart.dart)
 * [Delphi](Pascal/Delphi.pas)
 * [Elixir](Erlang/elixir.ex)
