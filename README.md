@@ -42,7 +42,7 @@ These are the currently implemented languages:
 * [PowerShell](Shell/PowerShell.ps1)
 * [Python](Python/Python.py)
 * [R](R/R.r)
-* [Ruby](Ruby/Ruby.ru)
+* [Ruby](Ruby/Ruby.rb)
 * [Rust](Rust/rust.rs)
 * [Scala](Java/Scala.scala)
 * [Sh](Shell/Sh.sh)
