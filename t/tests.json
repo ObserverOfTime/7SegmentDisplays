@@ -6,6 +6,7 @@
     "CMake": "cmake -P CMake/CMake.cmake 2>&1",
     "C": "C/C.out",
     "CoffeeScript": "coffee JavaScript/CoffeeScript.coffee",
+    "Crystal": "Crystal/Crystal.out",
     "D": "D/D.out",
     "Dart": "Dart/Dart.out",
     "Delphi": "Pascal/Delphi.out",

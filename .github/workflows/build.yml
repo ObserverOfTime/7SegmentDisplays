@@ -41,6 +41,8 @@ jobs:
         uses: dart-lang/setup-dart@v1
       - name: Install DMD
         uses: dlang-community/setup-dlang@v1
+      - name: Install Crystal
+        uses: crystal-lang/install-crystal@v1
       - name: Install Scala
         run: curl -JLO $DEB && sudo dpkg -i scala-2.13.7.deb
         env:
