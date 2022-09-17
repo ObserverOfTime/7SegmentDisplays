@@ -12,11 +12,11 @@ max_line_length = 80
 [Makefile]
 indent_style = tab
 indent_size = 8
-max_line_length =
+max_line_length = off
 
 [.github/workflows/build.yml]
-max_line_length =
 indent_size = 2
+max_line_length = off
 
 [t/tests.json]
-max_line_length =
+max_line_length = off

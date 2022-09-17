@@ -22,6 +22,7 @@ nimcache/
 META-INF/
 build/
 out/
+octave-workspace
 package.json
 package-lock.json
 yarn.lock

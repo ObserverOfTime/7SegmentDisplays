@@ -23,6 +23,7 @@
     "Lua": "lua5.3 Lua/Lua.lua",
     "MySQL": "mysql 7SegmentDisplays -Ns <SQL/MySQL.sql",
     "Nim": "Nim/Nim.out",
+    "Octave": "octave -f Octave/Octave.m",
     "Pascal": "Pascal/Pascal.out",
     "Perl6": "perl6 Perl/Perl6.p6",
     "Perl": "perl Perl/Perl.pl",

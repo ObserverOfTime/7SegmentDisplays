@@ -8,8 +8,8 @@ for (word in readLines("words.txt")) {
         longest <- c(longest, word)
     } else if (wlen > maxlen && !invalid(word)) {
         longest <- c(word)
-        maxlen <- nchar(word)
+        maxlen <- wlen
     }
 }
 
-cat(longest, sep="\n")
+cat(longest, sep = "\n")
