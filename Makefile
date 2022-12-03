@@ -97,7 +97,7 @@ test: t/tests.t; prove --trap -v $< $(if $(LANGS),:: $(LANGS),)
 
 ## Run benchmarks with hyperfine
 bench:
-	hyperfine -s basic -w 3 -r 7 $(commands) --export-markdown $(benchmarks)
+	hyperfine --style basic -w 3 -r 7 $(commands) --export-markdown $(benchmarks)
 	@gawk -iinplace 'NR<3;NR>2{print|"sort -n -k3 -t\\|"}' $(benchmarks)
 
 ## Remove all generated files

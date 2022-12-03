@@ -12,6 +12,7 @@
     "Delphi": "Pascal/Delphi.out",
     "Elixir": "elixir Erlang/elixir.ex",
     "Erlang": "escript -c Erlang/erlang.erl",
+    "Fennel": "fennel --no-fennelrc Lua/Fennel.fnl",
     "Gawk": "gawk -f Awk/Gawk.awk",
     "Go": "Go/Go.out",
     "Groovy": "groovy Java/Groovy.groovy 2>/dev/null",

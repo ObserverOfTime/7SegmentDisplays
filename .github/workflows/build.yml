@@ -1,3 +1,4 @@
+name: build
 on:
   push:
     branches: [master]
@@ -45,13 +46,19 @@ jobs:
       - name: Install DMD
         uses: dlang-community/setup-dlang@v1
       - name: Install Scala
-        run: curl -JLO $DEB && sudo dpkg -i scala-2.13.7.deb
+        run: curl -JLO $DEB && sudo dpkg -i scala-2.13.10.deb
         env:
-          DEB: https://downloads.lightbend.com/scala/2.13.7/scala-2.13.7.deb
+          DEB: https://downloads.lightbend.com/scala/2.13.10/scala-2.13.10.deb
+      - name: Install Fennel
+        run: |-
+          curl -JLO $URL && chmod +x fennel-1.2.1
+          sudo mv fennel-1.2.1 /usr/bin/fennel
+        env:
+          URL: https://fennel-lang.org/downloads/fennel-1.2.1
       - name: Install hyperfine
-        run: curl -JLO $DEB && sudo dpkg -i hyperfine_1.12.0_amd64.deb
+        run: curl -JLO $DEB && sudo dpkg -i hyperfine_1.15.0_amd64.deb
         env:
-          DEB: https://git.io/hyperfine-1.12
+          DEB: https://github.com/sharkdp/hyperfine/releases/download/v1.15.0/hyperfine_1.15.0_amd64.deb
       - name: Set up PostgreSQL
         run: |-
           sudo systemctl start postgresql.service && pg_isready

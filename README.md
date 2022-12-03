@@ -24,6 +24,7 @@ These are the currently implemented languages:
 * [Delphi](Pascal/Delphi.pas)
 * [Elixir](Erlang/elixir.ex)
 * [Erlang](Erlang/erlang.erl)
+* [Fennel](Lua/Fennel.fnl)
 * [Gawk](Awk/Gawk.awk)
 * [Go](Go/Go.go)
 * [Groovy](Java/Groovy.groovy)
