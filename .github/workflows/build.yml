@@ -6,7 +6,7 @@ on:
     branches: [master]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -31,34 +31,50 @@ jobs:
             libjson-parse-perl
             lua5.3
             nim
-            node-typescript
             octave
             r-base
             rakudo
             valac
             zsh
-      - name: Install npm packages
-        run: npm i -g @types/node livescript ts-node
       - name: Install Crystal
-        uses: crystal-lang/install-crystal@v1
-      - name: Install Dart SDK
-        uses: dart-lang/setup-dart@v1
-      - name: Install DMD
-        uses: dlang-community/setup-dlang@v1
-      - name: Install Scala
-        run: curl -JLO $DEB && sudo dpkg -i scala-2.13.10.deb
+        run: curl -L https://crystal-lang.org/install.sh | sudo bash
+      - name: Install Dart
+        run: |-
+          curl -JLO $DEB && sudo dpkg -i dart_3.0.5-1_amd64.deb
+          echo '/usr/lib/dart/bin' >> "$GITHUB_PATH"
         env:
-          DEB: https://downloads.lightbend.com/scala/2.13.10/scala-2.13.10.deb
+          DEB: https://storage.googleapis.com/dart-archive/channels/stable/release/latest/linux_packages/dart_3.0.5-1_amd64.deb
+        working-directory: /tmp
+      - name: Install Deno
+        run: |-
+          curl -JLO $URL && unzip deno-x86_64-unknown-linux-gnu.zip
+          sudo mv deno /usr/bin/deno
+        env:
+          URL: https://github.com/denoland/deno/releases/download/v1.35.0/deno-x86_64-unknown-linux-gnu.zip
+        working-directory: /tmp
+      - name: Install DMD
+        run: curl -JLO $DEB && sudo dpkg -i dmd_2.104.1-0_amd64.deb
+        env:
+          DEB: https://downloads.dlang.org/releases/2.x/2.104.1/dmd_2.104.1-0_amd64.deb
+        working-directory: /tmp
       - name: Install Fennel
         run: |-
-          curl -JLO $URL && chmod +x fennel-1.2.1
-          sudo mv fennel-1.2.1 /usr/bin/fennel
+          curl -JLO $URL && chmod +x fennel-1.3.0
+          sudo mv fennel-1.3.0 /usr/bin/fennel
         env:
-          URL: https://fennel-lang.org/downloads/fennel-1.2.1
+          URL: https://fennel-lang.org/downloads/fennel-1.3.0
+      - name: Install Scala
+        run: curl -JLO $DEB && sudo dpkg -i scala-2.13.11.deb
+        env:
+          DEB: https://downloads.lightbend.com/scala/2.13.11/scala-2.13.11.deb
+        working-directory: /tmp
+      - name: Install livescript
+        run: npm install -g livescript
       - name: Install hyperfine
-        run: curl -JLO $DEB && sudo dpkg -i hyperfine_1.15.0_amd64.deb
+        run: curl -JLO $DEB && sudo dpkg -i hyperfine_1.17.0_amd64.deb
         env:
-          DEB: https://github.com/sharkdp/hyperfine/releases/download/v1.15.0/hyperfine_1.15.0_amd64.deb
+          DEB: https://github.com/sharkdp/hyperfine/releases/download/v1.17.0/hyperfine_1.17.0_amd64.deb
+        working-directory: /tmp
       - name: Set up PostgreSQL
         run: |-
           sudo systemctl start postgresql.service && pg_isready

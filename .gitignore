@@ -32,7 +32,7 @@ yarn.lock
 *.o
 *.dill
 
-## Package files
+## Package files ##
 *.deb
 *.zip
 *.tar

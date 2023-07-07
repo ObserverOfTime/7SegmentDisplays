@@ -24,7 +24,7 @@
     "Lua": "lua5.3 Lua/Lua.lua",
     "MySQL": "mysql 7SegmentDisplays -Ns <SQL/MySQL.sql",
     "Nim": "Nim/Nim.out",
-    "Octave": "octave -f Octave/Octave.m",
+    "Octave": "octave -f Octave/Octave.m 2>/dev/null",
     "Pascal": "Pascal/Pascal.out",
     "Perl6": "perl6 Perl/Perl6.p6",
     "Perl": "perl Perl/Perl.pl",
@@ -36,7 +36,7 @@
     "Rust": "Rust/rust.out",
     "SQLite": "sqlite3 /tmp/7SegmentDisplays.db <SQL/SQLite.sql",
     "Scala": "scala -cp Java Scala7SegmentDisplays",
-    "TypeScript": "ts-node --skip-project -T JavaScript/TypeScript.ts",
+    "TypeScript": "deno run -q --allow-read --no-config --no-lock JavaScript/TypeScript.ts",
     "Vala": "C/Vala.out",
     "Zsh": "zsh -f Shell/Zsh.sh"
 }
