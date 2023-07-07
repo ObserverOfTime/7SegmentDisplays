@@ -39,10 +39,9 @@ NIM = nim compile
 NIMFLAGS = -d:release --os:linux --cpu:amd64 \
 	--app:console --nimcache:$(HOME)/.cache/nimcache
 
-# Pascal & Delphi
+# Pascal
 FPC = fpc
 PASCALFLAGS = -Tlinux -Px86_64 -O2
-DELPHIFLAGS = -Mdelphi $(PASCALFLAGS)
 
 # Rust
 RUSTC = rustc
@@ -73,8 +72,6 @@ cs: C/C\#.cs; $(CSC) $(CSCFLAGS) -out:$(<:.cs=.out) $<
 d: D/D.d; $(DC) $(DCFLAGS) -of=$(<:.d=.out) $<
 
 dart: Dart/Dart.dart; $(DART) $(DARTFLAGS) $< -o $(<:.dart=.out)
-
-delphi: Pascal/Delphi.pas; $(FPC) $(DELPHIFLAGS) -o$(<:.pas=.out) $<
 
 go: Go/Go.go; env $(GOFLAGS) $(GO) -o $(<:.go=.out) $<
 

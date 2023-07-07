@@ -9,7 +9,6 @@
     "Crystal": "Crystal/Crystal.out",
     "D": "D/D.out",
     "Dart": "Dart/Dart.out",
-    "Delphi": "Pascal/Delphi.out",
     "Elixir": "elixir Erlang/elixir.ex",
     "Erlang": "escript -c Erlang/erlang.erl",
     "Fennel": "fennel --no-fennelrc Lua/Fennel.fnl",

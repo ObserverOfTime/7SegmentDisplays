@@ -21,7 +21,6 @@ These are the currently implemented languages:
 * [Crystal](Crystal/Crystal.cr)
 * [D](D/D.d)
 * [Dart](Dart/Dart.dart)
-* [Delphi](Pascal/Delphi.pas)
 * [Elixir](Erlang/elixir.ex)
 * [Erlang](Erlang/erlang.erl)
 * [Fennel](Lua/Fennel.fnl)
