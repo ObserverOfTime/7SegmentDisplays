@@ -1,0 +1,42 @@
+## OS files ##
+.directory
+[Dd]esktop.ini
+Thumbs.db
+.DS_Store
+._*
+
+## Editor files ##
+.idea/
+[._]*.sw[a-p]
+[._]sw[a-p]
+.netrwhist
+.lvimrc
+tags
+*.iml
+*~
+
+## Language files ##
+node_modules/
+__pycache__/
+nimcache/
+META-INF/
+build/
+out/
+octave-workspace
+package.json
+package-lock.json
+yarn.lock
+*.py[cod]
+*.class
+*.out
+*.o
+*.dill
+
+## Package files ##
+*.deb
+*.zip
+*.tar
+*.tgz
+*.gz
+*.xz
+*.bz2
