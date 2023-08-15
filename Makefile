@@ -59,7 +59,7 @@ benchmarks = BENCHMARKS.md
 commands = $(shell awk -F[:,] '{printf $$2" "}' t/tests.json)
 
 ## Compile all languages
-all: c cpp crystal cs d dart delphi go java kotlin nim pascal rust scala vala
+all: c cpp crystal cs d dart go java kotlin nim pascal rust scala vala
 
 c: C/C.c; $(CC) $(CFLAGS) -o $(<:.c=.out) $<
 
@@ -67,7 +67,7 @@ cpp: C/C++.cpp; $(CPP) $(CPPFLAGS) -o $(<:.cpp=.out) $<
 
 crystal: Crystal/Crystal.cr; $(CRYSTAL) $(CRYSTALFLAGS) -o $(<:.cr=.out) $<
 
-cs: C/C\#.cs; $(CSC) $(CSCFLAGS) -out:$(<:.cs=.out) $<
+cs: CSharp/C\#.cs; $(CSC) $(CSCFLAGS) -out:$(<:.cs=.out) $<
 
 d: D/D.d; $(DC) $(DCFLAGS) -of=$(<:.d=.out) $<
 

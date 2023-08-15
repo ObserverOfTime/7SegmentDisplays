@@ -1,7 +1,7 @@
 {
     "Awk": "awk -f Awk/Awk.awk",
     "Bash": "bash --noprofile --norc Shell/Bash.sh",
-    "C#": "mono C/C#.out",
+    "C#": "mono CSharp/C#.out",
     "C++": "C/C++.out",
     "CMake": "cmake -P CMake/CMake.cmake 2>&1",
     "C": "C/C.out",

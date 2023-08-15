@@ -1,6 +1,5 @@
 #!/usr/bin/env perl
 
-use experimental 'for_list';
 use JSON::Parse 'json_file_to_perl';
 use Test::More;
 
@@ -13,7 +12,7 @@ EOF
 
 plan tests => @ARGV ? $#ARGV + 1 : scalar keys %$tests;
 
-foreach my($lang, $cmd) (%$tests) {
+while (my($lang, $cmd) = each %$tests) {
     # If arguments are passed, run only the
     # tests for the languages listed in them
     @ARGV && next unless grep m/^\Q$lang\E$/i, @ARGV;
