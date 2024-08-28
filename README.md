@@ -15,7 +15,7 @@ These are the currently implemented languages:
 * [Bash](Shell/Bash.sh)
 * [C](C/C.c)
 * [C++](C/C++.cpp)
-* [C#](C/C#.cs)
+* [C#](CSharp/C%23.cs)
 * [CMake](CMake/CMake.cmake)
 * [CoffeeScript](JavaScript/CoffeeScript.coffee)
 * [Crystal](Crystal/Crystal.cr)
