@@ -20,7 +20,7 @@
     "Julia": "julia Julia/Julia.jl",
     "Kotlin": "kotlin -cp Java Kotlin7SegmentDisplays",
     "LiveScript": "lsc JavaScript/LiveScript.ls",
-    "Lua": "lua5.3 Lua/Lua.lua",
+    "Lua": "lua5.4 Lua/Lua.lua",
     "MySQL": "mysql 7SegmentDisplays -Ns <SQL/MySQL.sql",
     "Nim": "Nim/Nim.out",
     "Octave": "octave -f Octave/Octave.m 2>/dev/null",

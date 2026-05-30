@@ -6,12 +6,18 @@ on:
     branches: [master]
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
       - name: Set up cache
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         with:
           path: /var/apt/cache/archives
           key: ${{runner.os}}-packages
@@ -24,58 +30,54 @@ jobs:
             -yq --no-install-suggests --no-install-recommends
           PACKAGES: >-
             coffeescript
+            crystal
             elixir
             fpc
             gawk
             groovy
+            hyperfine
             libjson-parse-perl
-            lua5.3
+            livescript
+            lua5.4
+            mono-mcs
             nim
             octave
             r-base
             rakudo
             valac
             zsh
-      - name: Install Crystal
-        run: curl -L https://crystal-lang.org/install.sh | sudo bash
       - name: Install Dart
         run: |-
-          curl -JLO $DEB && sudo dpkg -i dart_3.0.7-1_amd64.deb
+          curl -JLO $DEB && sudo dpkg -i dart_3.12.1-1_amd64.deb
           echo '/usr/lib/dart/bin' >> "$GITHUB_PATH"
         env:
-          DEB: https://storage.googleapis.com/dart-archive/channels/stable/release/latest/linux_packages/dart_3.0.7-1_amd64.deb
+          DEB: https://storage.googleapis.com/dart-archive/channels/stable/release/latest/linux_packages/dart_3.12.1-1_amd64.deb
         working-directory: /tmp
       - name: Install Deno
         run: |-
           curl -JLO $URL && unzip deno-x86_64-unknown-linux-gnu.zip
           sudo mv deno /usr/bin/deno
         env:
-          URL: https://github.com/denoland/deno/releases/download/v1.36.1/deno-x86_64-unknown-linux-gnu.zip
+          URL: https://github.com/denoland/deno/releases/download/v2.8.1/deno-x86_64-unknown-linux-gnu.zip
         working-directory: /tmp
       - name: Install DMD
-        run: curl -JLO $DEB && sudo dpkg -i dmd_2.105.0-0_amd64.deb
+        run: curl -JLO $DEB && sudo dpkg -i dmd_2.112.0-0_amd64.deb
         env:
-          DEB: https://downloads.dlang.org/releases/2.x/2.105.0/dmd_2.105.0-0_amd64.deb
+          DEB: https://downloads.dlang.org/releases/2026/dmd_2.112.0-0_amd64.deb
         working-directory: /tmp
       - name: Install Fennel
         run: |-
-          curl -JLO $URL && chmod +x fennel-1.3.1
-          sudo mv fennel-1.3.1 /usr/bin/fennel
+          curl -JLO $URL && chmod +x fennel-1.6.1
+          sudo mv fennel-1.6.1 /usr/bin/fennel
         env:
-          URL: https://fennel-lang.org/downloads/fennel-1.3.1
-      - name: Install Scala
-        run: curl -JLO $DEB && sudo dpkg -i scala-2.13.11.deb
-        env:
-          DEB: https://downloads.lightbend.com/scala/2.13.11/scala-2.13.11.deb
+          URL: https://fennel-lang.org/downloads/fennel-1.6.1
         working-directory: /tmp
-      - name: Install livescript
-        run: npm install -g livescript
-      - name: Install hyperfine
-        run: curl -JLO $DEB && sudo dpkg -i hyperfine_1.17.0_amd64.deb
+      - name: Install Scala 2
+        run: curl -JLO $DEB && sudo dpkg -i scala-2.13.18.deb
         env:
-          DEB: https://github.com/sharkdp/hyperfine/releases/download/v1.17.0/hyperfine_1.17.0_amd64.deb
+          DEB: https://github.com/scala/scala/releases/download/v2.13.18/scala-2.13.18.deb
         working-directory: /tmp
-      - name: Install Scala CLI
+      - name: Install Scala 3 CLI
         run: curl -JLO $DEB && sudo dpkg -i scala-cli-x86_64-pc-linux.deb
         env:
           DEB: https://github.com/VirtusLab/scala-cli/releases/download/v1.14.0/scala-cli-x86_64-pc-linux.deb
@@ -106,14 +108,19 @@ jobs:
       - name: Run benchmarks
         run: make bench
         if: github.event_name == 'push'
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        if: github.event_name == 'push'
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
         if: github.event_name == 'push'
         with:
-          publish_dir: .
-          force_orphan: true
-          enable_jekyll: true
-          user_name: github-actions[bot]
-          github_token: ${{github.token}}
-          full_commit_message: Deploy gh-pages
-          user_email: github-actions[bot]@users.noreply.github.com
+          source: .
+          destination: _site
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        if: github.event_name == 'push'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        if: github.event_name == 'push'
