@@ -34,7 +34,8 @@
     "Ruby": "ruby Ruby/Ruby.rb",
     "Rust": "Rust/rust.out",
     "SQLite": "sqlite3 /tmp/7SegmentDisplays.db <SQL/SQLite.sql",
-    "Scala": "scala -cp Java Scala7SegmentDisplays",
+    "Scala2": "scala -cp Java Scala7SegmentDisplays",
+    "Scala3": "./Java/Scala3.out",
     "TypeScript": "deno run -q --allow-read --no-config --no-lock JavaScript/TypeScript.ts",
     "Vala": "C/Vala.out",
     "Zsh": "zsh -f Shell/Zsh.sh"

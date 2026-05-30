@@ -47,9 +47,13 @@ PASCALFLAGS = -Tlinux -Px86_64 -O2
 RUSTC = rustc
 RUSTCFLAGS = -O -C target-cpu=native
 
-# Scala
+# Scala 2
 SCALAC = scalac
 SCALACFLAGS = -target:11 -opt:l:method
+
+# Scala 3
+SCALACLI = scala-cli package
+SCALACLIFLAGS = -j system --power --native --native-mode=release-fast
 
 # Vala
 VALAC = valac
@@ -59,7 +63,7 @@ benchmarks = BENCHMARKS.md
 commands = $(shell awk -F[:,] '{printf $$2" "}' t/tests.json)
 
 ## Compile all languages
-all: c cpp crystal cs d dart go java kotlin nim pascal rust scala vala
+all: c cpp crystal cs d dart go java kotlin nim pascal rust scala2 scala3 vala
 
 c: C/C.c; $(CC) $(CFLAGS) -o $(<:.c=.out) $<
 
@@ -85,7 +89,9 @@ pascal: Pascal/Pascal.pas; $(FPC) $(PASCALFLAGS) -o$(<:.pas=.out) $<
 
 rust: Rust/rust.rs; $(RUSTC) $(RUSTCFLAGS) -o $(<:.rs=.out) $<
 
-scala: Java/Scala.scala; $(SCALAC) $(SCALACFLAGS) -d Java $<
+scala2: Java/Scala2.scala; $(SCALAC) $(SCALACFLAGS) -d Java $<
+
+scala3: Java/Scala3.scala; $(SCALACLI) $(SCALACLIFLAGS) -o $(<:.scala=.out) $<
 
 vala: C/Vala.vala; $(VALAC) $(VALACFLAGS) -o $(<:.vala=.out) $<
 
@@ -98,7 +104,7 @@ bench:
 	@gawk -iinplace 'NR<3;NR>2{print|"sort -n -k3 -t\\|"}' $(benchmarks)
 
 ## Remove all generated files
-clean: ; find -regex '.*\.\(o\(ut\)?\|class\|dill\)' -exec rm -v {} +
+clean: ; find -regex '.*\.\(o\(ut\)?\|class\|dill\|nir\|tasty\)' -exec rm -v {} +
 
 ## List all languages in markdown format
 langs:

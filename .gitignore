@@ -20,6 +20,8 @@ node_modules/
 __pycache__/
 nimcache/
 META-INF/
+.bsp/
+.scala-build/
 build/
 out/
 octave-workspace
